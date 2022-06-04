@@ -13,7 +13,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 
-const allinfo = async () =>{
+const allInfo = async () =>{
     try {
         var total = []
         for(let i=1; i <=5; i++){
@@ -50,8 +50,8 @@ const getInfoDB = async () =>{
     });
 }
 
-const mergeInfo = async()=>{
-    const infoApi = await this.allinfo();
+const mergeInfo = async() =>{
+    const infoApi = await allInfo();
     const infoDB = await getInfoDB();
     const infoMerge = infoApi.concat(infoDB);
     return infoMerge;

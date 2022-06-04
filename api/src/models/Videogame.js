@@ -21,11 +21,11 @@ module.exports = (sequelize) => {
     },
 
     release_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
 
-    raiting: {
+    rating: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },

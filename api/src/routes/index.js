@@ -24,7 +24,7 @@ const allInfo = async () =>{
                     name: e.name,
                     description: e.description,
                     release_date: e.release_date,
-                    raiting: e.raiting,
+                    rating: e.rating,
                     plataform: e.plataform,
                     genres: e.genres?.map((e)=>e.name),
 
@@ -75,11 +75,11 @@ router.get("/videogames", async (req,res,next)=>{
             res.json(totalGames);
         }
     } catch (error) {
-        next(error);
+        next(error); 
     }
 });
 
-router.get("videogames/:id", async (req,res)=>{
+router.get("/videogames/:id", async (req,res)=>{
     const {id} = req.params;
     let videoId;
     if (id.includes("-")){
@@ -96,19 +96,20 @@ router.get("videogames/:id", async (req,res)=>{
         }
     }else {
         try {
-                const apiId = await axios.get(`https://api.rawg.io/api/games/${id}&page=${KEY_API}`);
+                const apiId = await axios.get(`https://api.rawg.io/api/games/${id}?key=${KEY_API}`);
                 const apiDetail = apiId.data;
                 videoId = {
                     id: apiDetail.id,
                     name: apiDetail.name,
-                    description: apiDetail.description_raw,
+                    description: apiDetail.description,
                     release_date:apiDetail.release_date,
-                    raiting: apiDetail.raiting,
+                    rating: apiDetail.rating,
                     plataform: apiDetail.plataform,
                     genres: apiDetail.genres
 
                 }
-        } catch (error) {
+        } 
+        catch (error) {
             console.log('Game ID not found', error)
         }
     }
@@ -120,49 +121,43 @@ router.get("videogames/:id", async (req,res)=>{
 });
 
 router.get('/genres', async(req,res)=>{
-    const genreVideo = await axios.get(`https://api.rawg.io/api/genres?key=${KEY_API}`)
-    const apiGenre = genreVideo.data.results.map(e=> e.name)
-    apiGenre.forEach(e =>{
-        Genero.findOrCreate({
-            where: {name: e}
-        })
-    });
-    const totalGenre = await Genero.findAll()
-    res.status(200).json(totalGenre)
+
+    try {
+        const genreVideo = await axios.get(`https://api.rawg.io/api/genres?key=${KEY_API}`)
+        const apiGenre = genreVideo.data.results.map(e=> e.name)
+        apiGenre.forEach(e =>{
+            Genero.findOrCreate({
+                where: {name: e}
+            })
+        });
+        const totalGenre = await Genero.findAll()
+    
+        res.status(200).json(totalGenre) 
+    
+    } catch (error) {
+        console.log(error);
+    }
+
+
+  
+
 });
 
 router.post('/videogames', async(req,res)=>{
-    const {name, description, release_date, raiting, plataform, genero} =req.body
+    const {name, description, release_date, rating, plataform, genero} =req.body
 
     try {
-        let CreatteGame= await Videogame.create({name, description, release_date, raiting, plataform})
+        let CreatteGame= await Videogame.create({name, description, release_date, rating, plataform})
 
         let gByGame = await Genero.findAll({
             where: {name: genero}
-        })    
+        })      
 
         CreatteGame.addGenero(gByGame)
         res.status(200).json({message: 'Video game created!'})
     } catch (error) {
         res.status(404).json({message: 'Invalid data'})
     }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;
+});      
+ 
+module.exports = router

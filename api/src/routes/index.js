@@ -57,4 +57,84 @@ const mergeInfo = async() =>{
     return infoMerge;
 }
 
+router.get("/videogames", async (req,res,next)=>{
+    try {
+        const name = req.query.name;
+        let totalGames = await mergeInfo()
+        if(name){
+            nameGames = await totalGames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+            if (nameGames.length > 0 ) {
+                const sliceVideo = nameGames.slice(0,15)
+                res.status(200).json(sliceVideo);
+            }
+            else {
+                res.status(404).json({message: 'No results found'});
+            }
+        }
+        else {
+            res.json(totalGames);
+        }
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get("videogames/:id", async (req,res)=>{
+    const {id} = req.params;
+    let videoId;
+    if (id.includes("-")){
+        try {
+            videoId = await Videogame.findOne({
+                where: {
+                    id: id
+                },
+                includes: {model: Genero,
+                attributes: ['name']}
+            });
+        } catch (error) {
+            console.log('Game ID not found', error)
+        }
+    }else {
+        try {
+                const apiId = await axios.get(`https://api.rawg.io/api/games/${id}&page=${KEY_API}`);
+                const apiDetail = apiId.data;
+                videoId = {
+                    id: apiDetail.id,
+                    name: apiDetail.name,
+                    description: apiDetail.description_raw,
+                    release_date:apiDetail.release_date,
+                    raiting: apiDetail.raiting,
+                    plataform: apiDetail.plataform.map((e)=> e),
+                    genres: apiDetail.genres
+
+                }
+        } catch (error) {
+            console.log('Game ID not found', error)
+        }
+    }
+    if (videoId) {
+        res.send(videoId);
+    }else{
+        res.status(404).json({message: 'Not found'});
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;

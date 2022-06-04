@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Router } = require('express');
-const axios = require ("axios")
+const axios = require ("axios");
 const {KEY_API } = process.env;
 const {Videogame, Genero} = require("../db.js")
 // Importar todos los routers;
@@ -30,7 +30,7 @@ const allInfo = async () =>{
 
                 }
             })
-            total= total.concat(infoApi)
+            total= total.concat(infoApi)    
         }
         return total;
     } catch (error) {
@@ -57,7 +57,7 @@ const mergeInfo = async() =>{
     return infoMerge;
 }
 
-router.get("/videogames", async (req,res,next)=>{
+router.get("/videogames", async (req,res,next)=>{       
     try {
         const name = req.query.name;
         let totalGames = await mergeInfo()
@@ -104,7 +104,7 @@ router.get("videogames/:id", async (req,res)=>{
                     description: apiDetail.description_raw,
                     release_date:apiDetail.release_date,
                     raiting: apiDetail.raiting,
-                    plataform: apiDetail.plataform.map((e)=> e),
+                    plataform: apiDetail.plataform,
                     genres: apiDetail.genres
 
                 }
@@ -121,7 +121,7 @@ router.get("videogames/:id", async (req,res)=>{
 
 router.get('/genres', async(req,res)=>{
     const genreVideo = await axios.get(`https://api.rawg.io/api/genres?key=${KEY_API}`)
-    const apiGenre = genreVideo.data.result.map(e=> e.name)
+    const apiGenre = genreVideo.data.results.map(e=> e.name)
     apiGenre.forEach(e =>{
         Genero.findOrCreate({
             where: {name: e}

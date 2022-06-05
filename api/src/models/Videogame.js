@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
 
     release_date: {
       type: DataTypes.DATEONLY,
+      defaultValue: DataTypes.NOW,
       allowNull: false,
     },
 
@@ -35,5 +36,5 @@ module.exports = (sequelize) => {
     }
 
   });
-}
+};
 

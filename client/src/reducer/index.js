@@ -1,113 +1,111 @@
-import { buscar, buscarPorNombre, buscarNombrePorId, obtenerGeneros, gameByGenre, gameByRating, alphabeticalOrder, postSubmit } from './actions'
+const initialState = {
+  videogames: [],
+  allGenres: [],
+  genreTypes: [],
+  videogameTypes: [],
+  detail: []
 
-const initialStore = {
-    fullGames: [],
-    videoGames: [],
-    name: [],
-    id: [],
-    genres: [],
-    platforms: [],
-    gamesFilterByGenre: [],
-    gamesFilterByRating: [],
-    order: [],
-    resPost: [],
-}
-
-const reducer = (state=initialStore, action) => {
-    switch (action.type){
-
-        case buscar: return {
-            ...state,
-            videoGames: action.payload
-         ,
-            fullGames: action.payload
-        }
-
-        case buscarPorNombre: return {
-            ...state,
-            videoGames: action.payload == null ? state.fullGames : action.payload
-        }
-
-        case buscarNombrePorId: return {
-            ...state,
-            id: [action.payload]
-        }
+};
 
 
-        case obtenerGeneros: return {
-            ...state,
-            genres: action.payload
-        }
+const rootReducer = (state = initialState, action)=>{
+  switch(action.type){
+      case 'GET_VIDEO_GAMES' : 
+          return {
+              ...state,
+              videogames : action.payload,
+              allGenres : action.payload
+          };
 
+          case "FILTER_BY_GENRE" :
+            const All_genres = state.allGenres;
+            const genreFiltered = action.payload === 'all' ? All_genres : All_genres.filter(e=> e.genres.includes(action.payload));
+            return {
+                ...state,
+                allGenres : genreFiltered
+            }
 
-        case gameByGenre: return {
-          ...state,
-          videoGames: action.payload.filter((e) => {
+            case "ORDER_BY_NAME" : 
+            const arrSorted = action.payload === 'asc' ?
+                state.allGenres.sort(function (a, b){
+                    if (a.name > b.name){
+                        return 1
+                    }
+                    if (b.name > a.name){
+                        return -1
+                    }
+                    return 0
+                }):
+                    state.allGenres.sort(function (a, b){
+                    if (a.name > b.name){
+                        return -1
+                    }
+                    if (b.name > a.name){
+                        return 1;
+                    }
+                    return 0
+                    })
+            return {
+                ...state,
+                allGenres : arrSorted
+            }
 
-              for(let i = 0; i < e.genres.length; i++){
-                  if(e.genres[i].name === action.name){
-                      
-                  }  
+            case "ORDER_BY_RATING" : 
+            const arrScored = action.payload === 'asc' ?
+                state.allGenres.sort(function (a, b){
+                    if (a.ratingScore > b.ratingScore){
+                        return 1
+                    }
+                    if (b.ratingScore > a.ratingScore){
+                        return -1
+                    }
+                    return 0
+                }):
+                    state.allGenres.sort(function (a, b){
+                    if (a.ratingScore > b.ratingScore){
+                        return -1
+                    }
+                    if (b.ratingScore > a.ratingScore){
+                        return 1;
+                    }
+                    return 0
+                    })
+            return {
+                ...state,
+                allGenres : arrScored
+            }        
+
+            case "GET_VIDEOGAMES_QUERY" :
+              return {
+                  ...state,
+                  allGenres : action.payload
               }
-              return e
-          })
-      }
 
-         case gameByRating: return {
-             ...state,
-             videoGames: action.descAsc === 'Asc' ? 
-             action.payload.sort(function(a, b) {
-                if (a.rating > b.rating) {
-                  return 1;
-                }
-                if (a.rating < b.rating) {
-                  return -1;
-                }
-                return 0;
-              })
-             : action.payload.sort(function(a, b) {
-                if (a.rating < b.rating) {
-                  return 1;
-                }
-                if (a.rating > b.rating) {
-                  return -1;
-                }
-                return 0;
-              })
-         }
+              case "GET_GENRES"  : 
+            return {
+                ...state,
+                genreTypes : action.payload
+            }
 
+            case "GET_GENRE_TYPES" :
+              return{
+                  ...state,
+                  videogameTypes : action.payload
+              }
 
-         case alphabeticalOrder: return {
-            ...state,
-            videoGames: action.descAsc === 'A - Z' ?
-            action.payload.sort(function(a, b) {
-                if (a.name > b.name) {
-                  return 1;
-                }
-                if (a.name < b.name) {
-                  return -1;
-                }
-                return 0;
-              })
-            : action.payload.sort(function(a, b) {
-                if (a.name < b.name) {
-                  return 1;
-                }
-                if (a.name >b.name) {
-                  return -1;
-                }
-                return 0;
-              })
-            
-        }
-        case postSubmit: return {
-          ...state,
-          resPost: action.postgame
-      }
+              case "POST_VIDEOGAME" : 
+              return {
+                  ...state
+              }
 
-
-        default: return state;
+              case "GET_DETAIL" :
+            return{
+                ...state,
+                detail : action.payload
+            }
+        default : 
+            return state
     }
 }
-
-export default reducer
+ 
+export default rootReducer

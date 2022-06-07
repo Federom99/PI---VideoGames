@@ -25,8 +25,9 @@ const allInfo = async () =>{
                     description: e.description,
                     release_date: e.release_date,
                     rating: e.rating,
-                    plataform: e.plataform,
-                    genres: e.genres?.map((e)=>e.name),
+                    plataform:e.platforms.map(a=>a),
+                    image:e.background_image,
+                    genre: e.genres?.map((e)=>e.name),
 
                 }
             })

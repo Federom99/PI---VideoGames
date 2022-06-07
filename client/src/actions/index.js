@@ -1,12 +1,13 @@
 import axios from 'axios';
+export const SET_PAGE = 'SET_PAGE';
 
 export const getVideoGames = ()=> {
     return async function(dispatch) {
-        let json = await axios.get('http://localhost:3001/videogames');
+        let a = await axios.get('http://localhost:3001/videogames');
 
         return dispatch({
             type: "GET_VIDEO_GAMES",
-            payload : json.data
+            payload : a.data
         })
     }
 }
@@ -82,10 +83,53 @@ export const getGenres = ()=>{
     }
 }
 
+export function getPlataforms(){
+    return async function (dispatch){
+        var json = await axios.get("http://localhost:3001/videogames", {});
+        return dispatch({
+            type: "GET_PLATAFORMS", 
+            payload: json.data});
+    };
+}
+
+export function getListGenres(){ //(GameCreate) (HOME) Me trae los Generos
+    return function(dispatch){
+        axios.get('http://localhost:3001/genres')
+        .then((response)=>{
+            dispatch({type:'GET_GENRES', payload: response.data})
+        }) 
+        .catch(()=>{ alert('Error al traer Generos')})
+    }
+}
+
+export function filterGamesByGenre(payload){
+    console.log (payload)
+    return {
+        type: 'FILTER_GAMES_BY_GENRES',
+        payload
+    }
+};
+
+//hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
+export function filterCreated(value){ //payload es el value q me llega
+    // console.log(payload)
+    return{
+        type: 'FILTER_CREATED',
+        payload: value
+    }
+};
+
+export function setPage(page){
+    return {
+        type: SET_PAGE,
+        payload: page
+    }
+}
+
 export const postVideoGames= (payload)=>{
     return async function(){
         try{
-            let json = await axios.post('http://localhost:3001/videogames', payload);
+            let json = await axios.post('http://localhost:3001/Newvideogames', payload);
             return json;
         }
         catch(e){

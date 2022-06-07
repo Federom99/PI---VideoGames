@@ -1,8 +1,10 @@
 .bgfl{
-    background: url(https://fondosmil.com/fondo/3552.jpg);
+    background: url(https://fondosmil.com/fondo/3555.jpg);
     background-size: cover;
-    height: 649px;
+    height: 1050px;
     display: flex;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+  
 }
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:100");
@@ -16,22 +18,24 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    left: 36pc;
-    top: 20px;
-    font-size: 50px;
+    left: 50pc;
+    top: -50px;
+    border-radius: 3rem;
+    font-size: 76px;
+    color: white;
 }
 
-.infap{
+/* .infap{
     position: relative;
     left: 28pc;
     top: 100px;
     font-weight: 300;
-}
+} */
 
 .coolBeans {
-  border: 2px solid currentColor;
+  border: 2px solid black;
   border-radius: 3rem;
-  color: #ff0;
+  color: black;
   font-family: roboto;
   font-size: 4rem;
   font-weight: 100;
@@ -42,12 +46,12 @@
   transition: 0.2s transform ease-in-out;
   will-change: transform;
   z-index: 0;
-  left: 261px;
-  top: 274px;
-  height: 129px;
+  left: 130px;
+  top: 580px;
+  height: 90px;
 }
 .coolBeans::after {
-  background-color: #ff0;
+  background-color: greenyellow;
   border-radius: 3rem;
   content: '';
   display: block;
@@ -66,8 +70,8 @@
   transform: translate(0, 0);
 }
 .coolBeans:hover {
-  border: 2px solid transparent;
-  color: #4b0082;
+  border: 2px solid black;
+  color: black;
   transform: scale(1.05);
   will-change: transform;
 }

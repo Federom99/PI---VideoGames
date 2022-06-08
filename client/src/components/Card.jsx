@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";    
+import { Link } from "react-router-dom";   
+
 
 export default function Card ({image, name, videoGame, genreType, id}){
     return(
@@ -9,11 +10,11 @@ export default function Card ({image, name, videoGame, genreType, id}){
             <div >
                 <span></span>
                 <div >
-                <img src={image} alt='no se encontro' width="380px" height="250px"/>
+                <img className="card" src={image} alt='no se encontro' width="380px" height="250px"/>
                 <h2>{name}</h2>
-                <h6>Type of Genre: </h6>
+                <h6>Genres: </h6>
                 <h4 className="hh44">{videoGame}</h4>
-                <h6 className="infh6">VideoGame: </h6>
+                <h6 className="infh6">Rating: </h6>
                 <h5>{genreType}</h5>
                 <Link to={'/videogames/' + id}>
                 <h3> Details</h3>

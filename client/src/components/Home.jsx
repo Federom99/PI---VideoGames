@@ -131,10 +131,14 @@ export default function Home (){
                 <br /><br /><br />
             </div>
         </div>
-               
+                        
                  
                     {/* ACA NE TRAIGO LA CARD PARA RENDERIZAR con los datos que quiero */}
-                    {currentGames?.length > 0 ? (
+
+
+                        
+                        
+                    {currentGames?.length > 0 ? ( 
                         currentGames?.map((e)=>{
 
                             return (
@@ -147,6 +151,9 @@ export default function Home (){
 
                         })):    
                         <div>
+                             <img  src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
+                <h1 className='b'>Loading...</h1>
+                <h3 className='b'>Please wait while we find best videogames for you</h3>
                
                     </div>
             }
@@ -155,13 +162,12 @@ export default function Home (){
                         gamesPage = {gamesPage}
                         allGames={allGames?.length}
                         paginado = {paginado}                    
-                         />            
-                    
-                    
-                    
+                         />          
+    
                 
                     
-                </div> 
-        </div>        
+             </div> 
+        </div>     
+           
         )}
         

@@ -2,7 +2,7 @@ const initialState = {
   videogames: [],
   allVideoGames: [],
   genres: [],
-  plataforms: [],
+  plataform: [],
   videoGamesdetails: [],
   gamesDelete: [],
 
@@ -34,7 +34,7 @@ export default function rootReducer(state =  initialState, action){ //action.pay
         case 'GET_PLATAFORMS':            
             return{
                 ...state,                
-                plataforms: action.payload
+                plataform: action.payload
             } 
         case 'FILTER_GAMES_BY_GENRES':
             const allStateGames = state.allVideoGames

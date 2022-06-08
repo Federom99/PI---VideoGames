@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import {getNameVideoGames} from '../actions';
-
+import '../styles/SearchBarStyle.css'
 export default function SearchBar(){
     // aca usamos Hook
    const dispatch =useDispatch()
@@ -19,14 +19,14 @@ export default function SearchBar(){
    }
 
    return (
-       <div>
+       <div >
            {/* //cuando apreto enter el form hace en submit */}
            <form onSubmit={(p)=> handleSubmit(p)}> 
-               <input
+               <input className='searchb'
                type = 'text'
                placeholder = "Buscar Juego..."
                onChange={(p) => handInputChange(p)}                />
-               <button type='submit'>Buscar</button>
+               <button type='submit' className='btn'>Buscar</button>
            </form>
        </div>
    )

@@ -3,14 +3,24 @@ export const SET_PAGE = 'SET_PAGE';
 
 export const getVideoGames = ()=> {
     return async function(dispatch) {
-        let a = await axios.get('http://localhost:3001/videogames');
+        try {
+            const a = await axios.get('http://localhost:3001/videogames');
+            if(a.status === 200) {
+                dispatch({
+                    type: "GET_VIDEO_GAMES",
+                    payload : a.data
+                    
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+ }
+  }
+        
+       
 
-        return dispatch({
-            type: "GET_VIDEO_GAMES",
-            payload : a.data
-        })
-    }
-}
+    
 
 export const filterVideogamesByGenre = (payload)=>{
     return {
@@ -103,7 +113,7 @@ export function getListGenres(){ //(GameCreate) (HOME) Me trae los Generos
 }
 
 export function filterGamesByGenre(payload){
-    console.log (payload)
+   
     return {
         type: 'FILTER_GAMES_BY_GENRES',
         payload

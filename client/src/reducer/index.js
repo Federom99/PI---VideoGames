@@ -10,6 +10,7 @@ const initialState = {
 
 
 export default function rootReducer(state =  initialState, action){ //action.payload llega las opciones del select
+    //console.log(action)
     switch(action.type){
         
         case 'GET_VIDEO_GAMES':
@@ -35,16 +36,14 @@ export default function rootReducer(state =  initialState, action){ //action.pay
                 ...state,                
                 plataforms: action.payload
             } 
-        case 'FILTER_BY_GENRE':
-            const allStateGames = state.videogames
+        case 'FILTER_GAMES_BY_GENRES':
+            const allStateGames = state.allVideoGames
             const tempGames = allStateGames.filter(p => {
                 if(p.genre){ // info viene como [{name:..},{name:..},{name:..}]
-                    const genres = p.genre.map( p => p.name)
+                    const genres = p.genre
                     return genres.includes(action.payload)}
-                if (p.genre) { //info viene como string
-                    return p.genre.includes(action.payload)
-                }
-                return null
+               
+                
             })           
             return {
                 ...state,

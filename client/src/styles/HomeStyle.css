@@ -1,0 +1,44 @@
+.colorLetrasBienvenido{   
+    border-radius:30px;
+    border:5px solid black;
+    /* background-color: rgb(88, 85, 85); */
+    background-color: rgba(42, 41, 41, 0.698);
+    color: white;
+    margin: 1rem;
+    /* padding: 1rem; */
+    /* text-align: center; */
+    width: 600px;
+    /* height: 350px; */
+}
+
+.a {
+
+  background: url(https://www.xtrafondos.com/wallpapers/juego-mario-rabbids-sparks-of-hope-8287.jpg);
+  background-size: cover;
+    height: 1050px;
+    display: flex;
+}
+
+.padre {
+    display: grid;
+    justify-content: center;
+  }
+.hijo {
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    text-shadow: black 1px 3px;
+        
+  }
+
+  .selectfont{
+    font-size:18px
+  }
+
+  .carddirectionhome{ 
+      display: grid;
+      font-size:21px;
+      /* background-color: royalblue; */
+      /* justify-content: left;  */
+      /* flex-direction: row */      
+    }

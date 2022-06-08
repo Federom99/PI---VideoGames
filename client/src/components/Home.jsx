@@ -88,7 +88,7 @@ export default function Home (){
     
                 <Link to= '/'><button className='selectfont'>IR A PAGINA DE INICIO</button></Link> 
                 <button  className="selectfont" onClick={p => {handleClick(p)}}>VOLVER A CARGAR JUEGOS</button>
-                <Link to= '/Newvideogames'><button className="selectfont" >CREAR JUEGO NUEVO</button></Link>                    
+                <Link to= '/videogames'><button className="selectfont" >CREAR JUEGO NUEVO</button></Link>                    
             </div>            
                 
                 <br />
@@ -153,7 +153,7 @@ export default function Home (){
                         <div>
                              <img  src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
                 <h1 className='b'>Loading...</h1>
-                <h3 className='b'>Please wait while we find best videogames for you</h3>
+                
                
                     </div>
             }

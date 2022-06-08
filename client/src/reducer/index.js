@@ -5,6 +5,7 @@ const initialState = {
   plataform: [],
   videoGamesdetails: [],
   gamesDelete: [],
+  resPost: []
 
 };
 
@@ -50,10 +51,12 @@ export default function rootReducer(state =  initialState, action){ //action.pay
                 videogames: action.payload === 'sinFiltro' ? allStateGames : tempGames,
                 // ? es entonces// : es sino // es un ternario
             }
-        case 'POST_GAMES'://No se declara en actions, se declara en el reducer. 
+        case 'SUBMIT_GAME'://No se declara en actions, se declara en el reducer. 
                           //en action solo se trae la ruta
                  return{
-                    ...state
+                    ...state,
+                    resPost: action.json
+
                  }
                 
         case 'GET_DETAIL':            

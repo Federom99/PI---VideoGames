@@ -82,7 +82,7 @@ export default function Home (){
         <div className='a'>        
             <div>             
                 <div className='padre'>
-                    <h1 className='colorLetrasBienvenido'>Welcome</h1>
+                   
                 </div>
             <div>
     
@@ -94,30 +94,30 @@ export default function Home (){
                 <br />
             <SearchBar
             />  
-            <div>                
-            <div  className="selectfont">
+            <div >                
+            <div  >
                 <br />
-                <select className="selectfont" onChange={p => handleSort(p)}>
+                <select className="selectfont2" onChange={p => handleSort(p)}>
                     <option value="" selected disabled hidden>Por Orden alfabético</option>                
                     <option value='asc'>Ascendente A-Z</option>
                     <option value='desc'>Descendente Z-A</option>
                 </select>            
                            
-                <select  className="selectfont" onChange={p => handleFilterCreated(p)}>                
+                <select  className="selectfont2" onChange={p => handleFilterCreated(p)}>                
                     <option value="" selected disabled hidden>Mostrar Juegos</option>
                     <option value="all">Todos Los Juegos</option>
                     <option value="api">De la API</option>
                     <option value="created">Creados</option>
                    
                 </select>   
-                <select  className="selectfont" onChange={p => handleSortRating(p)}>                
+                <select  className="selectfont2" onChange={p => handleSortRating(p)}>                
                     <option value="" selected disabled hidden>Rating</option>                
                     <option value="rasd">High Score</option>
                     <option value="rdes">Low Score</option>
                    
                 </select>   
     
-                <select  className="selectfont" onChange={p => handleFilterGamesByGenre(p)}>
+                <select  className="selectfont2" onChange={p => handleFilterGamesByGenre(p)}>
                     <option value="sinFiltro" selected disabled hidden>Generos</option>               
                     {genres?.map((p) => {
                             return (

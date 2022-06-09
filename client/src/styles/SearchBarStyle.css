@@ -4,20 +4,25 @@
 }
 
 .searchb{
-    height: 36px;
+    height: 50px;
     border-color: black;
     width: 300px;
+    float: left;
+    position: relative;
+    bottom: 68px;
+    left: 3px;
 }
 
 .btn {
     color: black;
-    height: 28px;
-    width: 100px;
+    height: 50px;
+    width: 28vh;
     font-size: 20px;
-    border-color: yellow;
+    border-color: black;
     position: relative;
-    left: 1px;
-    top: 1px;
-    background-color: yellow;
+    left: -1px;
+    bottom: 68px;
+    background-color: #2ECC71 ;
     cursor: pointer;
+    float: left;
 }

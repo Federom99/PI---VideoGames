@@ -20,8 +20,9 @@
 
   background: url(https://www.xtrafondos.com/wallpapers/juego-mario-rabbids-sparks-of-hope-8287.jpg);
   background-size: cover;
-    height: 1050px;
-    display: flex;
+    height: 100vh;
+    width: 100%;
+    /* display: flex; */
 }
 
 .padre {
@@ -37,8 +38,29 @@
   }
 
   .selectfont{
-    font-size:18px
+    font-size:18px;
+    background-color:#2ECC71 ;
+    left: 612px;
+    position: relative;
+    height: 48px;
+    
+    
+  
   }
+
+  .selectfont2{
+    font-size:18px;
+    background-color:#2ECC71 ;
+    right: 338px;
+    position: relative;
+    bottom: 89px;
+    height: 48px;
+  
+    
+  
+  }
+
+  
 
   .carddirectionhome{ 
       display: grid;

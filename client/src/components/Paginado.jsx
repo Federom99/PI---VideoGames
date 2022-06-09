@@ -16,6 +16,7 @@ export default function Paginado ({gamesPage, allGames, paginado}){
                     alingItems: 'center',
                     margin: '5px',                    
                     decoration: 'none'
+                   
                     
                 }}
                 className='paginado' >

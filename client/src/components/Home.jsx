@@ -144,7 +144,7 @@ export default function Home (){
                             return (
                                 <Fragment>
 
-                            <Card image={e.image} name ={e.name} videoGame={e.videoGame} genreType= {e.genreType} id={e.id}/>
+                            <Card image={e.image} name ={e.name} rating={e.rating} genre= {e.genre } id={e.id}/>
 
                                 </Fragment>
                             )

@@ -1,23 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";   
+import { Link } from "react-router-dom"; 
+import '../styles/Card.css'  
 
 
-export default function Card ({image, name, videoGame, genreType, id}){
+export default function Card ({image, name, rating, genre, id}){
     return(
-        <div >
+        <div  >
 
         <div >
             <div >
                 <span></span>
                 <div >
                 <img className="card" src={image} alt='no se encontro' width="380px" height="250px"/>
-                <h2>{name}</h2>
-                <h6>Genres: </h6>
-                <h4 className="hh44">{videoGame}</h4>
-                <h6 className="infh6">Rating: </h6>
-                <h5>{genreType}</h5>
+                <h2 className="t">{name}</h2>
+                <h6 className="heading">Genres: {genre + " "} </h6>
+                <h6 className="heading">Rating: {rating + " "} </h6>
                 <Link to={'/videogames/' + id}>
-                <h3> Details</h3>
+                <h3 className="details"> Details</h3>
                 </Link>
             </div>
          </div>

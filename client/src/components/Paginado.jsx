@@ -8,30 +8,20 @@ export default function Paginado ({gamesPage, allGames, paginado}){
         pageNumbers.push(i)
     }
     return(
-                               
-                <div  style={{
-                    display: 'flex',
-                    flexdirection: 'row',                    
-                    flexWrap: 'wrap',
-                    justifyContent:'center',
-                    alingItems: 'center',
-                    margin: '5px',                    
-                    decoration: 'none'
-                   
-                    
-                }}
-                className='paginado' >
+                
+
+                <div  className='pag4' >
                     
                     {pageNumbers &&                   
                      pageNumbers.map ( number => (
-                            <ul 
-                                className='number' key={number} >
-                                <button onClick={() => paginado(number)}>{ number }</button>
+                            <ul className='ull'
+                                key={number} >
+                                <button className='pag3' onClick={() => paginado(number)}>{ number }</button>
                             </ul>
                      )) }
 
                 </div>
-        
+                
 
     )
 

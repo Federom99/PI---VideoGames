@@ -1,0 +1,44 @@
+
+  .pag4{
+    display: flex;
+    flex-direction: row;                  
+    flex-Wrap: wrap;
+    justify-Content: center;
+    align-items: center;
+    margin: 8px;                 
+  }  
+
+  .pag3 {
+    justify-content: center;
+   
+    background-color: #2ECC71 ;
+    text-decoration: none;
+    border-radius: 30px;
+    /* color: #7265e7; */
+    color:black;
+    box-shadow:0px 5px #154360;
+    
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top:2em;
+    margin-bottom: 1em;
+    height: 40px;
+    width: 90px;
+    overflow: hidden;
+  }
+
+  .pag3:hover{
+   
+    transform: scale(1.05);
+    border: solid 2px  lightseagreen;
+    box-shadow: 0px 5px  black;
+    cursor: pointer;
+  
+    
+    
+ }
+
+
+  .ull{
+    padding-left: 50px;
+  }

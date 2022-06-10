@@ -22,7 +22,7 @@ const allInfo = async () =>{
                 return{
                     id: e.id,
                     name: e.name,
-                    description: e.description,
+                    description: e.description_raw,
                     release_date: e.release_date,
                     rating: e.rating,
                     plataform:e.platforms,
@@ -102,7 +102,7 @@ router.get("/videogames/:id", async (req,res)=>{
                 videoId = {
                     id: apiDetail.id,
                     name: apiDetail.name,
-                    description: apiDetail.description,
+                    description: apiDetail.description_raw,
                     release_date:apiDetail.released,
                     rating: apiDetail.rating,
                     plataform: apiDetail.platforms,

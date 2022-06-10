@@ -21,32 +21,33 @@ export default function Detail(p){
    
   
     return(
-        <div >
+        <div className='m' >
             {
+                
             
                 info?
-                <div  className='m'>
-                    <h1>Name:</h1>
-                    < h2>{info.name}</h2>
-                    <img src={info.image} alt='img nf' width="1000px" height="350px" />
-                    <h2> Description: </h2>
-                    <h3 >{info.description}</h3>
-                    <h2>Released</h2>
-                    <h3 >{info.release_date}</h3>
+                <div className='nq' >
                     
-                          <h2> Rating:</h2>
-                            <h2 >{info.rating}</h2>
-                            <p > Platforms:</p>
-                            {info.plataform?.map(g=>{
+                    < h2 className='detailName2' >{info.name}</h2>
 
-                                return (
-                                    <span key={Math.random()} >{g.platform.name} </span>
-                                )
-                            }) }
+                    <div> <Link to={'/home'}><button className='buttton' >Back Home</button></Link> </div>
 
+                    <img className='im2' src={info.image} alt='img nf' />
+                    <h2> Rating: {info.rating}</h2>
+                            
+                            <h2>Released: {info.release_date}  </h2>
+                    
+
+                    <p className='plt' > Platforms: {info.plataform?.map(g=>{
+
+                    return (
+                        <span className='span2' key={Math.random()} >{g.platform.name} </span>
+                    )
+                    }) } </p>
+                           
+                    <h2 className='descr'> Description: {info.description} </h2>
                           <br></br>
-                          <br></br>
-
+                          
                           <p>Genres</p>
                           
 
@@ -54,7 +55,7 @@ export default function Detail(p){
 
                 
                    
-                    <Link to={'/home'}><button >Back Home</button></Link>
+                    
                 </div>
                 :
                 <div>

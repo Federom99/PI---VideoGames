@@ -72,14 +72,12 @@
 .buttton{
     font-size:18px;
     background-color:#2ECC71 ;
-    left: 684px;
-    bottom: 62px;
+    left: 0px;
+    bottom: 12px;
     position: relative;
-    height: 48px;
-    width: 600px;
+    height: 70px;
+    width: 750px;
+    cursor: pointer;
   }
 
   
- .buttton:active {
-    transform: scale(0.9);
-} 

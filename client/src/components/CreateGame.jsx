@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {postVideoGames} from '../actions';
 import {useHistory} from 'react-router-dom'
@@ -8,7 +9,7 @@ function Create({postVideoGames}){
 
     const [state, setState] = useState({
         name: '',
-        release_date: 0,
+        release_date: null,
         rating: 0,
         image: '',
         genre: [],
@@ -68,7 +69,7 @@ function Create({postVideoGames}){
         if(state.image == ''){
             return alert("Missing add the URL of the image" + " " + "(Falta agregar el URL de la imagen)")
         }
-        if(state.description == '' || state.description.length < 15){
+        if(state.description == '' || state.description.length < 5){
             if(state.description == '') return alert("Missing add description" + " " + "(Falta agregar descripción)")
             if(state.description.length < 15) return alert("Description must be at least 15 characters" + " " + "(La descripción debe tener al menos 15 caracteres)")
         }
@@ -91,7 +92,7 @@ function Create({postVideoGames}){
             <form onSubmit={(e)=>handleSubmit(e)}>
                 
                 <div className="main-content" >
-
+                <Link to= '/home'><button className='selectfont3'>IR A PAGINA DE INICIO</button></Link> 
                     <h3 className="name2"  >CREATE NEW VIDEOGAME</h3>
                     <br></br>
 

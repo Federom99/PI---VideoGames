@@ -139,7 +139,7 @@ export function setPage(page){
 export const postVideoGames= (payload)=>{
     return async function(){
         try{
-            let json = await axios.post('http://localhost:3001/videogames', payload);
+            const json = await axios.post('http://localhost:3001/videogames', payload);
             return {
                 type: 'SUBMIT_GAME',
                 json: json.data
@@ -155,7 +155,7 @@ export const getDetails = (id)=>{
     return async function(dispatch){
         try{
             let json = await axios.get(`http://localhost:3001/videogames/${id}`);
-            
+            console.log(json.data)
             return dispatch({
                 type : "GET_DETAIL",
                 payload : json.data

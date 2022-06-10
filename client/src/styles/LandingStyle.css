@@ -1,9 +1,11 @@
 .as{
-    background: url(https://fondosmil.com/fondo/3555.jpg);
-    background-size: cover;
-    height: 960px;
+    background: url(https://i.pinimg.com/originals/8c/f0/1b/8cf01b0f5bac59468e7bd497a4f8d9d8.jpg);
+    background-size: fill;
+    height: 100vh;
+    width: 100%;
     display: flex;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+   
   
 }
 
@@ -18,7 +20,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    left: 50pc;
+    left: 80pc;
     top: -50px;
     border-radius: 3rem;
     font-size: 76px;
@@ -46,12 +48,13 @@
   transition: 0.2s transform ease-in-out;
   will-change: transform;
   z-index: 0;
-  left: 130px;
-  top: 580px;
+  left: 330px;
+  top: 380px;
   height: 90px;
+  background-color: orange;
 }
 .fr::after {
-  background-color: greenyellow;
+  background-color: yellow;
   border-radius: 3rem;
   content: '';
   display: block;

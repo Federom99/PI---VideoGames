@@ -70,7 +70,7 @@ export default function Home (){
     };
 
     //filtramos los creados en la Bdatos
-    function handleFilterCreated(p) {
+    function handlefilterCreated(p) {
         p.preventDefault();
         dispatch(filterCreated(p.target.value))
     };    
@@ -98,12 +98,12 @@ export default function Home (){
             <div  >
                 <br />
                 <select className="selectfont2" onChange={p => handleSort(p)}>
-                    <option value="" selected disabled hidden>Por Orden alfabético</option>                
-                    <option value='asc'>Ascendente A-Z</option>
+                    <option value="" selected disabled hidden  >Por Orden alfabético</option>                
+                    <option value='asc' >Ascendente A-Z</option>
                     <option value='desc'>Descendente Z-A</option>
                 </select>            
                            
-                <select  className="selectfont2" onChange={p => handleFilterCreated(p)}>                
+                <select  className="selectfont2" onChange={p => handlefilterCreated(p)}>                
                     <option value="" selected disabled hidden>Mostrar Juegos</option>
                     <option value="all">Todos Los Juegos</option>
                     <option value="api">De la API</option>
@@ -138,7 +138,7 @@ export default function Home (){
 
                         
                         
-                    {currentGames?.length > 0 ? ( 
+                    <div  className='cc' >   {currentGames?.length > 0 ? ( 
                         currentGames?.map((e)=>{
 
                             return (
@@ -149,14 +149,16 @@ export default function Home (){
                                 </Fragment>
                             )
 
-                        })):    
-                        <div>
+                        })) :  
+                           
+                        <div className='gif' >
                              <img  src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
                 <h1 className='b'>Loading...</h1>
                 
                
                     </div>
-            }
+            }   
+            </div> 
                          {/* aca defino las props que necesita el paginado */}
                         <Paginado
                         gamesPage = {gamesPage}

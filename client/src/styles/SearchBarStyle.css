@@ -26,3 +26,16 @@
     cursor: pointer;
     float: left;
 }
+
+.btn:hover{
+   
+    transform: scale(1.05);
+    border: solid 2px lightseagreen;
+    box-shadow: 0px 5px lightseagreen;
+  
+    background-image: linear-gradient(to top, lightseagreen 0%, lightseagreen 100%);
+    
+ }
+ .btn:active {
+    transform: scale(0.9);
+} 

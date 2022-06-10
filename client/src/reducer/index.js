@@ -5,7 +5,8 @@ const initialState = {
   plataform: [],
   videoGamesdetails: [],
   gamesDelete: [],
-  resPost: []
+  resPost: [],
+  createInDb: [],
 
 };
 
@@ -16,10 +17,10 @@ export default function rootReducer(state =  initialState, action){ //action.pay
         
         case 'GET_VIDEO_GAMES':
             return{
-                ...state, // guardamos el estado anterior como buena practica
+                ...state, 
                 videogames: action.payload,  
-                //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
-                // el payload lo creamos en actions como payload: json.data
+               
+               
                 allVideoGames: action.payload
             }      
         case 'GET_VIDEOGAMES_QUERY':
@@ -40,7 +41,7 @@ export default function rootReducer(state =  initialState, action){ //action.pay
         case 'FILTER_GAMES_BY_GENRES':
             const allStateGames = state.allVideoGames
             const tempGames = allStateGames.filter(p => {
-                if(p.genre){ // info viene como [{name:..},{name:..},{name:..}]
+                if(p.genre){ 
                     const genres = p.genre
                     return genres.includes(action.payload)}
                
@@ -49,10 +50,9 @@ export default function rootReducer(state =  initialState, action){ //action.pay
             return {
                 ...state,
                 videogames: action.payload === 'sinFiltro' ? allStateGames : tempGames,
-                // ? es entonces// : es sino // es un ternario
+                
             }
-        case 'SUBMIT_GAME'://No se declara en actions, se declara en el reducer. 
-                          //en action solo se trae la ruta
+        case 'SUBMIT_GAME':
                  return{
                     ...state,
                     resPost: action.json

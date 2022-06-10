@@ -13,10 +13,10 @@ function App() {
     <Switch>
       <Route exact path= '/'><LandingPage /></Route>
       <Route exact path= '/home'><Home /></Route>
-      <Route path='/videogames/:id' ><Details />
-      <Route path= '/videogames' ><CreateGame /></Route>
+      <Route  path='/videogames/:id' ><Details /> </Route> 
+      <Route  path= '/videogames' ><CreateGame /></Route>
       
-      </Route>                   
+                        
            
       </Switch>
     </div>

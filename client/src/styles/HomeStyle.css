@@ -60,7 +60,33 @@
   
   }
 
+
+  .selectfont:hover{
+   
+    transform: scale(1.05);
+    border: solid 2px lightseagreen;
+    box-shadow: 0px 5px lightseagreen;
   
+    background-image: linear-gradient(to top, lightseagreen 0%, lightseagreen 100%);
+    
+ }
+ .selectfont:active {
+    transform: scale(0.9);
+} 
+  
+.selectfont2:hover{
+   
+  transform: scale(1.05);
+  border: solid 2px lightseagreen;
+  box-shadow: 0px 5px lightseagreen;
+
+  background-image: linear-gradient(to top, lightseagreen 0%, lightseagreen 100%);
+  
+}
+.selectfont2:active {
+  transform: scale(0.9);
+} 
+
 
   .carddirectionhome{ 
       display: grid;
@@ -69,3 +95,44 @@
       /* justify-content: left;  */
       /* flex-direction: row */      
     }
+
+    .selectfont3{
+      font-size:18px;
+      background-color:#2ECC71 ;
+      left: 433px;
+      position: relative;
+      bottom: 41px;
+      height: 48px;
+    
+    
+      
+    
+    }
+  
+  
+    .selectfont3:hover{
+     
+      transform: scale(1.05);
+      border: solid 2px lightseagreen;
+      box-shadow: 0px 5px lightseagreen;
+    
+      background-image: linear-gradient(to top, lightseagreen 0%, lightseagreen 100%);
+      
+   }
+   .selectfont3:active {
+      transform: scale(0.9);
+  } 
+
+  .cc{
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    
+  }
+
+  .gif{
+
+    margin-left: auto;
+     margin-right:auto;
+  }

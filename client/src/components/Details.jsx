@@ -18,6 +18,7 @@ export default function Detail(p){
         dispatch(getDetails(id))
     }, [dispatch, id])
     
+    console.log(info)
    
   
     return(
@@ -34,8 +35,10 @@ export default function Detail(p){
 
                     <img className='im2' src={info.image} alt='img nf' />
                     <h2> Rating: {info.rating}</h2>
+                    
                             
                             <h2>Released: {info.release_date}  </h2>
+                            
                     
 
                     <p className='plt' > Platforms: {info.plataform?.map(g=>{
@@ -44,17 +47,18 @@ export default function Detail(p){
                         <span className='span2' key={Math.random()} >{g.platform.name} </span>
                     )
                     }) } </p>
+
+                        <p className='genr' >Genres : {info.genres?.map(ge=>{
+                            console.log(ge)
+                            return (
+                                <span className='genr' > {ge.name} </span>
+                            )
+                        })}   </p>
+
+
                            
                     <h2 className='descr'> Description: {info.description} </h2>
-                          <br></br>
-                          
-                          <p>Genres</p>
-                          
 
-                    
-
-                
-                   
                     
                 </div>
                 :

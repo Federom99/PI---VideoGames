@@ -25,7 +25,7 @@ const allInfo = async () =>{
                     description: e.description,
                     release_date: e.release_date,
                     rating: e.rating,
-                    plataform:e.platforms.map(a=>a),
+                    plataform:e.platforms,
                     image:e.background_image,
                     genre: e.genres?.map((e)=>e.name),
 
@@ -103,10 +103,11 @@ router.get("/videogames/:id", async (req,res)=>{
                     id: apiDetail.id,
                     name: apiDetail.name,
                     description: apiDetail.description,
-                    release_date:apiDetail.release_date,
+                    release_date:apiDetail.released,
                     rating: apiDetail.rating,
-                    plataform: apiDetail.plataform,
-                    genres: apiDetail.genres
+                    plataform: apiDetail.platforms,
+                    genres: apiDetail.genres,
+                    image: apiDetail.background_image
 
                 }
         } 
@@ -141,13 +142,13 @@ router.get('/genres', async(req,res)=>{
  });
 
 router.post('/videogames', async(req,res)=>{
-    const {name, description, release_date, rating, plataform, genero} =req.body
+    const {name, description, release_date, rating, plataform, genres} =req.body
 
     try {
-        let CreatteGame= await Videogame.create({name, description, release_date, rating, plataform})
+        let CreatteGame= await Videogame.create({name, description, release_date, rating, plataform, genres})
 
         let gByGame = await Genero.findAll({
-            where: {name: genero}
+            where: {name: genres}
         })      
 
         CreatteGame.addGenero(gByGame)

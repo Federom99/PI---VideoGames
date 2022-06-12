@@ -137,6 +137,7 @@ export function setPage(page){
 }
 
 export const postVideoGames= (payload)=>{
+    
     return async function(){
         try{
             const json = await axios.post('http://localhost:3001/videogames', payload);

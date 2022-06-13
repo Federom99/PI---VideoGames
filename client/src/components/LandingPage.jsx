@@ -8,7 +8,7 @@ import '../styles/LandingStyle.css';
         <div className="as">
             <h2 className="welcome">Welcome</h2>
         
-            <a class="fr" href="/home">Go Home</a>
+            <a className="fr" href="/home">Go Home</a>
             {/* <Link to = '/home'>   
             <br /><br /><br /> 
             <button src='/Home'>INGRESAR</button>

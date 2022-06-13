@@ -53,7 +53,7 @@
   .selectfont{
     font-size:18px;
     background-color:#2ECC71 ;
-    left: 612px;
+    left: 683px;
     position: relative;
     height: 48px;
     cursor: pointer;
@@ -65,7 +65,7 @@
   .selectfont2{
     font-size:18px;
     background-color:#2ECC71 ;
-    right: 338px;
+    right: 270px;
     position: relative;
     bottom: 89px;
     height: 48px;
@@ -113,7 +113,7 @@
     .selectfont3{
       font-size:18px;
       background-color:#2ECC71 ;
-      left: 433px;
+      left: 380px;
       position: relative;
       bottom: 41px;
       height: 48px;

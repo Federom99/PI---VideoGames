@@ -28,10 +28,10 @@ export default function Detail(p){
             
                 info?
                 <div className='nq' >
-                    
-                    < h2 className='detailName2' >{info.name}</h2>
+                      <div> <Link to={'/home'}><button className='buttton' >Back Home</button></Link> </div>
+                    < h1 className='detailName2' >{info.name}</h1>
 
-                    <div> <Link to={'/home'}><button className='buttton' >Back Home</button></Link> </div>
+                    
 
                     <img className='im2' src={info.image} alt='img nf' />
                     <h2> Rating: {info.rating}</h2>
@@ -51,16 +51,18 @@ export default function Detail(p){
                         <p className='genr' >Genres : {info.genres?.map(ge=>{
                             console.log(ge)
                             return (
-                                <span className='genr' > {ge.name} </span>
+                                <span className='genr'key={Math.random()} > {ge.name} </span>
                             )
-                        })}   </p>
 
+                            
+                        })}  
+                         </p>
+
+                        
+                        
 
                            
-                    <h2 className='descr'> Description: {info.description} </h2>
-
-                    
-                </div>
+                    <h2 className='descr'> Description: {info.description} </h2></div>
                 :
                 <div>
                              <img  src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
@@ -82,3 +84,11 @@ export default function Detail(p){
 
 
 
+// {
+//     generos?.map(g=>{
+//         console.log(g)
+//         return (
+//             <option> {g.name} </option>
+//         )
+//     })
+// }

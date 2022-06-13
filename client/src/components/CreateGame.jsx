@@ -1,29 +1,28 @@
-import React, {useState, useEffect} from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {postVideoGames, getGenres} from '../actions';
+import React, {useState} from "react";
+import {  useDispatch } from "react-redux";
+import {postVideoGames} from '../actions';
+import {useHistory} from 'react-router-dom'
 import { Link } from "react-router-dom";
 import '../styles/CreateGameStyle.css';
 
 export default function Form(){
-
-    const genres  = useSelector(state=>state.genre);
+   
+    let myHistory = useHistory()
     const dispatch = useDispatch();
     const [newGame, setNewGame] = useState({genre:[], plataform:[]});
     const [errores, setErrores] = useState({genre:[], plataform:[]});
 
-    useEffect(()=>{
-        dispatch(getGenres())
-    },[])
+  
 
-    function validateForm(newGame){
-        let errors = {};
+    function validate(newGame){
+        const errors = {};
 
         if(!newGame.name){
             errors.name="no has ingresado el nombre"
         }
-        if (!newGame.release_date){
-            errors.release_date = "ingresa la fecha"
-        }
+        // if (!newGame.release_date){
+        //     errors.release_date = "ingresa la fecha"
+        // }
         if(!newGame.rating) {
             errors.rating = " ingresa la calificacion"
         }
@@ -36,11 +35,13 @@ export default function Form(){
         if(!newGame.genre || newGame.genre.length===0){
             errors.genre = "debes seleccionar un genero"
         }
-        if(!newGame.plataform || newGame.plataform.length===0){
-            errors.plataform = " debes seleccionar una"
-        }
+        // if(!newGame.plataform || newGame.plataform.length===0){
+        //     errors.plataform = " debes seleccionar una"
+        // }
         return errors;
     }
+
+    
 
     function captureValue(e){
         if(e.target.name==="plataform" || e.target.name === "genre") {
@@ -54,7 +55,7 @@ export default function Form(){
             })
         }
 
-        setErrores(validateForm({
+        setErrores(validate({
             ...newGame,
             [e.target.name] : e.target.value
         }))
@@ -62,8 +63,13 @@ export default function Form(){
 
     
 
+    
+
     function handleSubmit(e){
+        e.preventDefault();
         dispatch(postVideoGames(newGame))
+        alert("VideoGame created");
+        myHistory.push("/home")
     }
 
         return (
@@ -73,35 +79,47 @@ export default function Form(){
             <form onSubmit={(e)=>handleSubmit(e)}>
                 
                 <div className="main-content" >
-                <Link to= '/home'><button className='selectfont3'>IR A PAGINA DE INICIO</button></Link> 
+                <Link to= '/home'><button className='selectfont3'>GO HOME</button></Link> 
                     <h3 className="name2"  >CREATE NEW VIDEOGAME</h3>
                     <br></br>
 
                     <div >
                         
-                        <label>Name of the game: </label>
+                        <label>Name </label>
+                        {errores.name && (
+                        <p >{errores.name}</p>
+                    )}
                         <br></br>
                         <input className="name" type="text" name="name" placeholder="..." onChange={(e)=>captureValue(e)} />
                     </div>
 
                     <div >
-                        <label>Release: </label>
+                        <label>Release </label>
+                        {errores.release_date && (
+                        <p >{errores.release_date}</p>
+                    )}
                         <br></br>
                         <input className="name" type="date" name="released"  onChange={(e)=>captureValue(e)} />
                     </div>
 
 
                     <div >
-                        <label>Rating: </label>
+                        <label>Rating </label>
+                        {errores.rating && (
+                        <p >{errores.rating}</p>
+                    )}
                         <br></br>
                         <input  className="name"type="text" name="rating" placeholder="0-5" onChange={(e)=>captureValue(e)} />
                     </div>
 
 
                     <div >
-                        <label>Image url: </label>
+                        <label>Image url </label>
                         <br></br>
                         <input  className="name" type="url" name="image" placeholder="URL" onChange={(e)=>captureValue(e)} />
+                        {errores.image && (
+                        <p >{errores.image}</p>
+                    )}
                         <br></br>
                     </div>
                     
@@ -179,8 +197,17 @@ export default function Form(){
                         <br></br>
 
                         <div className="in"><input value="Card" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Card</label></div>
+                      
+                       
+                        {errores.genre && (
+                        <p >{errores.genre}</p>
+                    )}
+                        
+
+                       
                         <br></br>
                         <br></br>
+                        
                         
                         
                     </div>
@@ -236,6 +263,9 @@ export default function Form(){
                         <br></br>
 
                         <div className="in"><input value="PlayStation" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>PLAYSTATION</label></div>
+                        {errores.plataform && (
+                        <p >{errores.plataform}</p>
+                    )}
                         <br></br>
                     </div>
                     <div >
@@ -243,11 +273,28 @@ export default function Form(){
                         <label >Description: </label>
                         <div>
                             <textarea className="comment" type="text" name="description" placeholder="Type a description of your game" cols="40" rows="6" onChange={(e)=>captureValue(e)} />
-                        </div>
+                       
+                            {errores.description && (
+                        <p >{errores.description}</p>
+                    )}
                     </div>
-                    <button className="submit" type='submit' >Create Game</button>
+                    </div>
+                    {
+                    !errores.name &&
+                    !errores.plataform &&
+                    !errores.release_date &&
+                    !errores.genre &&
+                    !errores.rating &&
+                    !errores.description &&
+                    !errores.image 
+                
+                    ? <button className="submit" type='submit' >Create Game</button> : <p className='error2'> Check the errors  <br /> Before create VideoGame</p>
+                }
+
                     
                 </div>
+                
+
             </form>
         </div>
 

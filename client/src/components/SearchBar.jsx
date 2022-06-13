@@ -24,9 +24,9 @@ export default function SearchBar(){
            <form onSubmit={(p)=> handleSubmit(p)}> 
                <input className='searchb'
                type = 'text'
-               placeholder = "Buscar juego por nombre..."
+               placeholder = "Search game by name..."
                onChange={(p) => handInputChange(p)}                />
-               <button type='submit' className='btn'>Buscar</button>
+               <button type='submit' className='btn'>Search</button>
            </form>
        </div>
    )

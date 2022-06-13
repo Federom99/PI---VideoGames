@@ -86,9 +86,9 @@ export default function Home (){
                 </div>
             <div>
     
-                <Link to= '/'><button className='selectfont'>IR A PAGINA DE INICIO</button></Link> 
-                <button  className="selectfont" onClick={p => {handleClick(p)}}>VOLVER A CARGAR JUEGOS</button>
-                <Link to= '/videogames'><button className="selectfont" >CREAR JUEGO NUEVO</button></Link>                    
+                <Link to= '/'><button className='selectfont'>GO TO HOME PAGE</button></Link> 
+                <button  className="selectfont" onClick={p => {handleClick(p)}}>RELOAD GAMES</button>
+                <Link to= '/videogames'><button className="selectfont" >CREATE NEW GAME</button></Link>                    
             </div>            
                 
                 <br />
@@ -98,16 +98,16 @@ export default function Home (){
             <div  >
                 <br />
                 <select className="selectfont2" onChange={p => handleSort(p)}>
-                    <option value="" selected disabled hidden  >Por Orden alfabético</option>                
-                    <option value='asc' >Ascendente A-Z</option>
-                    <option value='desc'>Descendente Z-A</option>
+                    <option value="" selected disabled hidden  >In alphabetical order</option>                
+                    <option value='asc' > A-Z</option>
+                    <option value='desc'> Z-A</option>
                 </select>            
                            
                 <select  className="selectfont2" onChange={p => handlefilterCreated(p)}>                
-                    <option value="" selected disabled hidden>Mostrar Juegos</option>
-                    <option value="all">Todos Los Juegos</option>
-                    <option value="api">De la API</option>
-                    <option value="created">Creados</option>
+                    <option value="" selected disabled hidden>Show Games</option>
+                    <option value="all">All games</option>
+                    <option value="api">From API</option>
+                    <option value="created">Created</option>
                    
                 </select>   
                 <select  className="selectfont2" onChange={p => handleSortRating(p)}>                
@@ -118,7 +118,7 @@ export default function Home (){
                 </select>   
     
                 <select  className="selectfont2" onChange={p => handleFilterGamesByGenre(p)}>
-                    <option value="sinFiltro" selected disabled hidden>Generos</option>               
+                    <option value="sinFiltro" selected disabled hidden>Genres</option>               
                     {genres?.map((p) => {
                             return (
                                 <option key={p.id} value={p.name}>

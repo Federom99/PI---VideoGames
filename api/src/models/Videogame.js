@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
       defaultValue: [],
     },
 
-    genre: {
+    genre:  {
       type: DataTypes.ARRAY(DataTypes.JSONB
         ),
       allowNull: false,

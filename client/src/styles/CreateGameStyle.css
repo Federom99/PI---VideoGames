@@ -103,3 +103,9 @@ body{
     float: right;
   }
  
+  .alert{
+
+    display: block;
+    color: yellow;
+    font-size: 25px;
+  }

@@ -48,7 +48,7 @@ export default function Detail(p){
                     )
                     }) } </p>
 
-                        <p className='genr' >Genres : {info.genres?.map(ge=>{
+                        <p className='genr' >Genres : {info.genre?.map(ge=>{
                             console.log(ge)
                             return (
                                 <span className='genr'key={Math.random()} > {ge.name} </span>
@@ -64,7 +64,7 @@ export default function Detail(p){
                            
                     <h2 className='descr'> Description: {info.description} </h2></div>
                 :
-                <div>
+                <div className='gif'>
                              <img  src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
                 <h1 className='b'>Loading...</h1>
                 

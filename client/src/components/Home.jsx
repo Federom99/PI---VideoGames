@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
 import {useDispatch, useSelector} from 'react-redux';
-import {getVideoGames, getGenres, filterGamesByGenre, filterCreated, orderByName, getPlataforms, orderByRating} from '../actions';
+import {getVideoGames, getGenres, filterVideogamesByGenre, filterCreated, orderByName, getPlataforms, orderByRating} from '../actions';
 import '../styles/HomeStyle.css'
 //LINK nos sirve para poder movernos por nuestra aplicación
 //más fácilmente en lugar de tener que cambiar la URL manualmente en el navegador.
@@ -65,7 +65,7 @@ export default function Home (){
     //Aca aplico lógica, esta funcion le paso en el select de Types 
     //En HOME -> ALL Generos/Plataformas ETC
     function handleFilterGamesByGenre(p){
-        dispatch(filterGamesByGenre(p.target.value))
+        dispatch(filterVideogamesByGenre(p.target.value))
         console.log(p.target.value)
     };
 
@@ -112,8 +112,8 @@ export default function Home (){
                 </select>   
                 <select  className="selectfont2" onChange={p => handleSortRating(p)}>                
                     <option value="" selected disabled hidden>Rating</option>                
-                    <option value="rasd">High Score</option>
-                    <option value="rdes">Low Score</option>
+                    <option value="rasd">Low Score</option>
+                    <option value="rdes">High Score</option>
                    
                 </select>   
     

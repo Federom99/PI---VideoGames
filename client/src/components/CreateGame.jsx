@@ -18,25 +18,28 @@ export default function Form(){
         const errors = {};
 
         if(!newGame.name){
-            errors.name="no has ingresado el nombre"
+            errors.name="Missing add the name"
         }
-        // if (!newGame.release_date){
-        //     errors.release_date = "ingresa la fecha"
-        // }
+        if (!newGame.release_date){
+            errors.release_date = "Missing add game release date"
+        }else if(!/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(newGame.release_date))
+        {errors.release_date="You must enter a valid format"}
         if(!newGame.rating) {
-            errors.rating = " ingresa la calificacion"
-        }
+            errors.rating = " Enter the rating of the game "
+        }else if (!/^[0-5]([.][0-9]{1,2})?/.test(Number(newGame.rating)))
+        {errors.rating="The rating must be between 1 and 5"}
         if(!newGame.description) {
-            errors.description = "ingresa la descripcion"
-        }
+            errors.description = "Missing add description"
+        } 
         if(!newGame.image){
-            errors.image= "ingresa una url"
-        }
+            errors.image= "Missing add the URL of the image"
+        }else if (!/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/.test(newGame.image))
+        {errors.image=" You must enter a valid url"}
         if(!newGame.genre || newGame.genre.length===0){
-            errors.genre = "debes seleccionar un genero"
+            errors.genre = "Need to add genres"
         }
         // if(!newGame.plataform || newGame.plataform.length===0){
-        //     errors.plataform = " debes seleccionar una"
+        //     errors.plataform = " Need to add platforms"
         // }
         return errors;
     }
@@ -68,7 +71,7 @@ export default function Form(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(postVideoGames(newGame))
-        alert("VideoGame created");
+        alert("VideoGame created!!");
         myHistory.push("/home")
     }
 
@@ -87,7 +90,7 @@ export default function Form(){
                         
                         <label>Name </label>
                         {errores.name && (
-                        <p >{errores.name}</p>
+                        <p className="alert">{errores.name}</p>
                     )}
                         <br></br>
                         <input className="name" type="text" name="name" placeholder="..." onChange={(e)=>captureValue(e)} />
@@ -96,17 +99,17 @@ export default function Form(){
                     <div >
                         <label>Release </label>
                         {errores.release_date && (
-                        <p >{errores.release_date}</p>
+                        <p className="alert">{errores.release_date}</p>
                     )}
                         <br></br>
-                        <input className="name" type="date" name="released"  onChange={(e)=>captureValue(e)} />
+                        <input className="name" type="date" name="release_date"  onChange={(e)=>captureValue(e)} />
                     </div>
 
 
                     <div >
                         <label>Rating </label>
                         {errores.rating && (
-                        <p >{errores.rating}</p>
+                        <p className="alert" >{errores.rating}</p>
                     )}
                         <br></br>
                         <input  className="name"type="text" name="rating" placeholder="0-5" onChange={(e)=>captureValue(e)} />
@@ -118,7 +121,7 @@ export default function Form(){
                         <br></br>
                         <input  className="name" type="url" name="image" placeholder="URL" onChange={(e)=>captureValue(e)} />
                         {errores.image && (
-                        <p >{errores.image}</p>
+                        <p  className="alert">{errores.image}</p>
                     )}
                         <br></br>
                     </div>
@@ -200,7 +203,7 @@ export default function Form(){
                       
                        
                         {errores.genre && (
-                        <p >{errores.genre}</p>
+                        <p  className="alert">{errores.genre}</p>
                     )}
                         
 
@@ -264,7 +267,7 @@ export default function Form(){
 
                         <div className="in"><input value="PlayStation" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>PLAYSTATION</label></div>
                         {errores.plataform && (
-                        <p >{errores.plataform}</p>
+                        <p className="alert" >{errores.plataform}</p>
                     )}
                         <br></br>
                     </div>
@@ -275,7 +278,7 @@ export default function Form(){
                             <textarea className="comment" type="text" name="description" placeholder="Type a description of your game" cols="40" rows="6" onChange={(e)=>captureValue(e)} />
                        
                             {errores.description && (
-                        <p >{errores.description}</p>
+                        <p className="alert" >{errores.description}</p>
                     )}
                     </div>
                     </div>
@@ -288,7 +291,7 @@ export default function Form(){
                     !errores.description &&
                     !errores.image 
                 
-                    ? <button className="submit" type='submit' >Create Game</button> : <p className='error2'> Check the errors  <br /> Before create VideoGame</p>
+                    ? <button className="submit" type='submit' >Create Game</button> : <p className="alert"> Check the errors  <br /> Before create VideoGame</p>
                 }
 
                     
@@ -599,4 +602,3 @@ export default function Form(){
 
 
 // export default connect(mapStateToProps, {postVideoGames})(Create)
-

@@ -25,7 +25,7 @@ const allInfo = async () =>{
                     description: e.description_raw,
                     release_date: e.release_date,
                     rating: e.rating,
-                    plataform:e.platforms,
+                    plataform:e.platforms.map(e => e.platform.name),
                     image:e.background_image,
                     genre: e.genres?.map((e)=>e.name),
 
@@ -63,7 +63,7 @@ router.get("/videogames", async (req,res,next)=>{
         const name = req.query.name;
         let totalGames = await mergeInfo()
         if(name){
-            nameGames = await totalGames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+            nameGames =  totalGames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
             if (nameGames.length > 0 ) {
                 const sliceVideo = nameGames.slice(0,15)
                 res.status(200).json(sliceVideo);
@@ -106,7 +106,7 @@ router.get("/videogames/:id", async (req,res)=>{
                     release_date:apiDetail.released,
                     rating: apiDetail.rating,
                     plataform: apiDetail.platforms,
-                    genres: apiDetail.genres,
+                    genre: apiDetail.genres,
                     image: apiDetail.background_image
 
                 }

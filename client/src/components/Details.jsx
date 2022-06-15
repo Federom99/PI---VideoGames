@@ -63,10 +63,12 @@ export default function Detail(p){
                         
 
                            
-                    <h2 className='descr'> Description: {info.description} </h2></div>
+                    <h2 className='descr'> Description: {info.description} </h2>
+                    
+                    </div>
                 :
-                <div className='gif'>
-                             <img  src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
+                <div >
+                             <img className='gif' src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
                 <h1 className='b'>Loading...</h1>
                 
                

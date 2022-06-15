@@ -13,7 +13,7 @@
    
     background-color: #2ECC71 ;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 80px;
     /* color: #7265e7; */
     color:black;
     box-shadow:0px 5px #154360;
@@ -22,8 +22,8 @@
     margin-right: 0.5em;
     margin-top:2em;
     margin-bottom: 1em;
-    height: 40px;
-    width: 90px;
+    height: 50px;
+    width: 130px;
     overflow: hidden;
   }
 

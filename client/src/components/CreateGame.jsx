@@ -29,8 +29,8 @@ export default function Form(){
     const finalPlataforms = Object.keys(repeatedPlataforms)
 
     console.log("soy genresssss", genres)
-    console.log("plataformasdas", finalPlataforms)
-    
+    // console.log("plataformasdas", finalPlataforms)
+    console.log(newGame)
     function validate(newGame){
         const errors = {};
         if(!newGame.name){
@@ -56,16 +56,19 @@ export default function Form(){
             errors.genre = "Need to add genres"
         }
         
+        
         return errors;
     }
 
     function captureValue(e){
-        const value = e.target.value
+        console.log(e.target.value)
+        
         if(e.target.name=== "plataform") {
-            newGame["plataform"].push(value);
+            newGame["plataform"].push(e.target.value);
+      
         }
-        if(e.target.name === "genre") {
-            newGame["genre"].push(value);
+       else if(e.target.name === "genre") {
+            newGame["genre"].push(e.target.value);
         }
         else {
             setNewGame({
@@ -163,12 +166,13 @@ export default function Form(){
 
                     <div  > 
                         <label className="name2" >PLATFORMS </label>
+                       
                         {finalPlataforms.map((p)=>{
                             return(
                                 <>
                                  
                                  
-                                <div className="in"><input value={p} type="checkbox" name="plataforms" onChange={(e)=>captureValue(e)}/><label>{p}</label></div>
+                                <div className="in"><input value={p} type="checkbox" name="plataform" onChange={(e)=>captureValue(e)}/><label>{p}</label></div>
                                 <br></br>
                                 <br></br>
                                 </>

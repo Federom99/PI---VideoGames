@@ -18,7 +18,7 @@ export default function Home (){
 
       //CREO VARIOS ESTADOS LOCALES y lo seteo en 1- ACA CALCULO LAS CARD POR PAGINAS
       const [currentPage, setCurrentPage] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
-      const [gamesPage, setGamesPage] = useState(9); 
+      const [gamesPage, setGamesPage] = useState(15); 
       const indexOfLastGame = currentPage * gamesPage 
       const indexOfFirstGame = indexOfLastGame - gamesPage 
 
@@ -80,7 +80,7 @@ export default function Home (){
     return(
         
         <div className='a'>        
-            <div>             
+            <div className='a' >             
                 <div className='padre'>
                    
                 </div>

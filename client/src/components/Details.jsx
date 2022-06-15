@@ -41,17 +41,18 @@ export default function Detail(p){
                             
                     
 
-                    <p className='plt' > Platforms: {info.plataform?.map(g=>{
+                    <p className='plt' > Platforms: {info.plataform?.map((g,i)=>{
+                        
 
                     return (
-                        <span className='span2' key={Math.random()} >{g.platform.name} </span>
+                        <span className='span2' key={i} >{g?.platform?.name??g} </span>
                     )
                     }) } </p>
 
-                        <p className='genr' >Genres : {info.genre?.map(ge=>{
+                        <p className='genr' >Genres : {info.genre?.map((ge,i)=>{
                             console.log(ge)
                             return (
-                                <span className='genr'key={Math.random()} > {ge.name} </span>
+                                <span className='genr'key={i} > {ge.name??ge} </span>
                             )
 
                             

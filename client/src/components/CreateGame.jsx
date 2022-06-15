@@ -1,28 +1,45 @@
-import React, {useState} from "react";
-import {  useDispatch } from "react-redux";
-import {postVideoGames} from '../actions';
+import React, {useState, useEffect} from "react";
+import {  useDispatch, useSelector } from "react-redux";
+import {postVideoGames, getGenres, getPlataforms} from '../actions';
 import {useHistory} from 'react-router-dom'
 import { Link } from "react-router-dom";
 import '../styles/CreateGameStyle.css';
 
 export default function Form(){
-   
-    let myHistory = useHistory()
+    const myHistory = useHistory();
     const dispatch = useDispatch();
     const [newGame, setNewGame] = useState({genre:[], plataform:[]});
     const [errores, setErrores] = useState({genre:[], plataform:[]});
+    const allGenres = useSelector((state) => state.genres)
+    const allPlataforms = useSelector((state) => state.plataform);
+    useEffect (()=>{
+        dispatch(getGenres()); 
+        dispatch(getPlataforms());        
+    },[dispatch])
 
-  
+    const genres = allGenres.map((e)=>e.name)
+    const plataforms = allPlataforms.map((e)=>e.plataform)
+    const plataformsFiltered = [].concat.apply([],plataforms)
+    const repeatedPlataforms = {}
+    for( let i = 0 ; i < plataformsFiltered?.length ; i++ ){
+        repeatedPlataforms[plataformsFiltered[i]]?
+        repeatedPlataforms[plataformsFiltered[i]]+=1 :
+        repeatedPlataforms[plataformsFiltered[i]]=1
+    }
+    const finalPlataforms = Object.keys(repeatedPlataforms)
 
+    console.log("soy genresssss", genres)
+    console.log("plataformasdas", finalPlataforms)
+    
     function validate(newGame){
         const errors = {};
-
         if(!newGame.name){
             errors.name="Missing add the name"
         }
         if (!newGame.release_date){
             errors.release_date = "Missing add game release date"
-        }else if(!/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(newGame.release_date))
+        }
+     else if(!/^\d{4}([-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(newGame.release_date))
         {errors.release_date="You must enter a valid format"}
         if(!newGame.rating) {
             errors.rating = " Enter the rating of the game "
@@ -33,40 +50,34 @@ export default function Form(){
         } 
         if(!newGame.image){
             errors.image= "Missing add the URL of the image"
-        }else if (!/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/.test(newGame.image))
+        }else if (!/^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/.test(newGame.image))
         {errors.image=" You must enter a valid url"}
         if(!newGame.genre || newGame.genre.length===0){
             errors.genre = "Need to add genres"
         }
-        // if(!newGame.plataform || newGame.plataform.length===0){
-        //     errors.plataform = " Need to add platforms"
-        // }
+        
         return errors;
     }
 
-    
-
     function captureValue(e){
-        if(e.target.name==="plataform" || e.target.name === "genre") {
-            let value = e.target.value
-            let genreBefore = newGame[e.target.name];
-            genreBefore.push({name:value})
-        }else {
+        const value = e.target.value
+        if(e.target.name=== "plataform") {
+            newGame["plataform"].push(value);
+        }
+        if(e.target.name === "genre") {
+            newGame["genre"].push(value);
+        }
+        else {
             setNewGame({
                 ...newGame,
                 [e.target.name] : e.target.value
             })
         }
-
         setErrores(validate({
             ...newGame,
             [e.target.name] : e.target.value
         }))
     }
-
-    
-
-    
 
     function handleSubmit(e){
         e.preventDefault();
@@ -75,7 +86,7 @@ export default function Form(){
         myHistory.push("/home")
     }
 
-        return (
+    return (
         
         <div  className="main">
           
@@ -128,80 +139,15 @@ export default function Form(){
                     
                     <div >
                         <label className="name2" >GENRES </label>
-                        
-                        <div className="in" ><input className="b2" value="Action" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Action  </label></div>
-                        <br></br>
-                        <br></br>
-                        <div className="in"><input value="Indie" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Indie</label></div>
-                        <br></br>
-                        <br></br>
-                        <div className="in"><input value="Strategy" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Strategy</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Adventure" type="checkbox"  name="genre" onChange={(e)=>captureValue(e)}/><label>Adventure</label></div>
-                        <br></br>
-                        <br></br>
-                        
-                        <div className="in"><input value="RPG" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>RPG</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Shooter"type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Shooter</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Casual" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Casual</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Simulation"type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Simulation</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Arcade" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Arcade</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Puzzle" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Puzzle</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Platformer" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Platformer</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Racing" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Racing</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Massively Multiplayer" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Massively Multiplayer</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Fighting" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Fighting</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Sports" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Sports</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Family" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Family</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Board Games" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Board Games</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Educational" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Educational</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Card" type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>Card</label></div>
-                      
-                       
+                        {genres.map((g)=>{
+                            return(
+                                <>
+                                <div className="in" ><input className="b2" value={g} type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>{g}</label></div>
+                                <br></br>
+                                <br></br>
+                                </>
+                            )
+                        })}
                         {errores.genre && (
                         <p  className="alert">{errores.genre}</p>
                     )}
@@ -211,61 +157,23 @@ export default function Form(){
                         <br></br>
                         <br></br>
                         
-                        
+                       
                         
                     </div>
 
                     <div  > 
                         <label className="name2" >PLATFORMS </label>
-                        <div className="in"><input value="PlayStation 4" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>PS4</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="PlayStation 5" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>PS5</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="PC" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>PC</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="SEGA" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>SEGA</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="NINTENDO 64" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>NINTENDO 64</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Xbox One" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>XBOX ONE</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Xbox 360" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>XBOX X</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="GAME BOY ADVANCED" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>GAME BOY ADVANCED</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="IOS" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>IOS</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Linux" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>LINUX</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="Android" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>ANDROID</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="WEB" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>WEB</label></div>
-                        <br></br>
-                        <br></br>
-
-                        <div className="in"><input value="PlayStation" type="checkbox" name="platforms" onChange={(e)=>captureValue(e)}/><label>PLAYSTATION</label></div>
+                        {finalPlataforms.map((p)=>{
+                            return(
+                                <>
+                                 
+                                 
+                                <div className="in"><input value={p} type="checkbox" name="plataforms" onChange={(e)=>captureValue(e)}/><label>{p}</label></div>
+                                <br></br>
+                                <br></br>
+                                </>
+                            )
+                        })}
                         {errores.plataform && (
                         <p className="alert" >{errores.plataform}</p>
                     )}
@@ -305,6 +213,9 @@ export default function Form(){
     )
     
 }
+
+
+
 
 
 // import React, {useState} from "react";
@@ -602,3 +513,17 @@ export default function Form(){
 
 
 // export default connect(mapStateToProps, {postVideoGames})(Create)
+
+
+{/* <label className="name2" >PLATFORMS </label>
+{plataforms.map((p)=>{
+    return(
+        <>
+         
+         
+        <div className="in"><input value={p} type="checkbox" name="plataforms" onChange={(e)=>captureValue(e)}/><label>{p}</label></div>
+        <br></br>
+        <br></br>
+        </>
+    )
+})} */}

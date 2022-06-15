@@ -15,83 +15,53 @@ export default function Detail(p){
    
 
     useEffect(()=>{
-        dispatch(getDetails(id))
+    dispatch(getDetails(id))
     }, [dispatch, id])
     
-    console.log(info)
+    // console.log(info)
    
   
     return(
-        <div className='m' >
-            {
-                
-            
-                info?
-                <div className='nq' >
-                      <div> <Link to={'/home'}><button className='buttton' >Back Home</button></Link> </div>
-                    < h1 className='detailName2' >{info.name}</h1>
+    <div className='m' >
 
+    {info?
+    <div className='nq'>
+
+    <div> <Link to={'/home'}><button className='buttton' >Back Home</button></Link> </div>
+
+    <h1 className='detailName2' >{info.name}</h1>
+
+    <img className='im2' src={info.image} alt='img nf'/>
+
+    <h2> Rating: {info.rating}</h2>
+
+    <h2>Released: {info.release_date}  </h2>
+
+    <p className='plt' > Platforms: {info.plataform?.map((g,i)=>{
+    
+    return (
+    <span className='span2' key={i} >{g?.platform?.name??g} </span>
+    )
+    })}</p>
+
+    <p className='genr' >Genres : {info.genre?.map((ge,i)=>{
+    // console.log(ge)
+    return (
+    <span className='genr'key={i} > {ge.name??ge} </span>
+    )
+    })}  
+    </p>
+
+    <h2 className='descr'> Description: {info.description} </h2>
                     
+    </div>
+    :
+    <div>
+    <img className='gif' src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
 
-                    <img className='im2' src={info.image} alt='img nf' />
-                    <h2> Rating: {info.rating}</h2>
-                    
-                            
-                            <h2>Released: {info.release_date}  </h2>
-                            
-                    
-
-                    <p className='plt' > Platforms: {info.plataform?.map((g,i)=>{
-                        
-
-                    return (
-                        <span className='span2' key={i} >{g?.platform?.name??g} </span>
-                    )
-                    }) } </p>
-
-                        <p className='genr' >Genres : {info.genre?.map((ge,i)=>{
-                            console.log(ge)
-                            return (
-                                <span className='genr'key={i} > {ge.name??ge} </span>
-                            )
-
-                            
-                        })}  
-                         </p>
-
-                        
-                        
-
-                           
-                    <h2 className='descr'> Description: {info.description} </h2>
-                    
-                    </div>
-                :
-                <div >
-                             <img className='gif' src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif" alt="Loading"/>
-                <h1 className='b'>Loading...</h1>
-                
-               
-                    </div>
-            }
-        </div>
+    <h1 className='b'>Loading...</h1>
+    </div>
+    }
+    </div>
     ) 
-}
-
-
-
-
-
-
-
-
-
-
-// {
-//     generos?.map(g=>{
-//         console.log(g)
-//         return (
-//             <option> {g.name} </option>
-//         )
-//     })
-// }
+    }

@@ -1,28 +1,21 @@
 
 import React from 'react';
 import '../styles/PaginadoStyle.css'
+
 export default function Paginado ({gamesPage, allGames, paginado}){
-    const pageNumbers = []
+const pageNumbers = []
 
-    for (var i=1; i<=Math.ceil(allGames/gamesPage); i++){
-        pageNumbers.push(i)
-    }
-    return(
-                
+for (var i=1; i<=Math.ceil(allGames/gamesPage); i++){pageNumbers.push(i)}
 
-                <div  className='pag4' >
-                    
-                    {pageNumbers &&                   
-                     pageNumbers.map ( number => (
-                            <ul className='ull'
-                                key={number} >
-                                <button className='pag3' onClick={() => paginado(number)}>{ number }</button>
-                            </ul>
-                     )) }
-
-                </div>
-                
-
-    )
-
+return(
+<div className='pag4'>
+{pageNumbers &&                   
+pageNumbers.map ( number => (
+<ul className='ull'
+key={number} >
+<button className='pag3' onClick={() => paginado(number)}>{ number }</button>
+</ul>
+))}
+</div>
+)
 }

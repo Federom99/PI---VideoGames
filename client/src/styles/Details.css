@@ -3,10 +3,10 @@
 .detailName2{
     color: white;
     display: block;
-    background-color: #571ECA ;
+    background-color: #ca1ec1 ;
     width: 100%;
     height: 4 5px;
-    padding: 5px 10px;
+    margin-top: 30px;;
     
 }
 
@@ -15,6 +15,7 @@
     height: 450px;
     border-style:inset;
     border-color: rgb(255, 214, 127);
+    margin-top: -18px;
 }
 
 .m {
@@ -73,18 +74,21 @@
 
 .buttton{
     font-size:25px;
-    background-color:#2ECC71 ;
+    background-color:lightseagreen;
     left: 0px;
     bottom: 0px;
     position: relative;
     height: 70px;
     width: 1000px;
     cursor: pointer;
+    top: 3px;
   }
+
+  
 
   .buttton2{
     font-size:25px;
-    background-color:red;
+    background-color:rgb(255, 166, 0);
     left: 0px;
     bottom: 0px;
     position: relative;

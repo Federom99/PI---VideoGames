@@ -3,10 +3,9 @@ const initialState = {
     allVideoGames: [],
     genres: [],
     plataform: [],
-    videoGamesdetails: [],
-    gamesDelete: [],
     resPost: [],
     createInDb: [],
+    videoGamesdetails: [],
   };
   
   
@@ -39,6 +38,11 @@ const initialState = {
      ...state,                
      plataform: action.payload
      } 
+
+     case 'DELETE_VIDEOGAME':
+      return {
+          ...state
+      }
     
      
      case 'FILTER_BY_GENRE':
@@ -61,7 +65,22 @@ const initialState = {
     }
     
     
-    case 'GET_DETAIL':            
+    case 'GET_DETAIL':   
+            // let arrGenre = action.payload;
+            // let arrDetail = []
+
+            // if (action.payload.hasOwnProperty('name')) {
+            //     arrDetail = action.payload
+            // }
+
+            // if (action.payload[0] && action.payload[0].hasOwnProperty('createdVideoGame')) {
+            //     arrDetail = arrGenre[0]
+            // }
+
+            // return {
+            //     ...state,
+            //     detail: arrDetail
+            // }  
     return {
     ...state,
     videoGamesdetails: action.payload

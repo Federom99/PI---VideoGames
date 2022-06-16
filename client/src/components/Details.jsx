@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getDetails } from '../actions/index';
+import { getDetails,deleteGame  } from '../actions/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import '../styles/Details.css'
@@ -12,13 +12,26 @@ export default function Detail(p){
     const dispatch = useDispatch();
     const {id} = useParams();
     const info = useSelector((state)=> state.videoGamesdetails);
-   
+    const gameId = useParams();
+    const myHistory = useHistory();
+    
+
+    const deleteG = () => {
+        if (info.hasOwnProperty('createInDb')) {
+            dispatch(deleteGame(gameId.id))
+            alert("Game deleted!");
+            myHistory.push("/home")
+            
+        } else {
+            alert('This game cannot be deleted!')
+        }
+    }
 
     useEffect(()=>{
     dispatch(getDetails(id))
     }, [dispatch, id])
     
-    // console.log(info)
+    console.log(info)
    
   
     return(
@@ -29,7 +42,13 @@ export default function Detail(p){
 
     <div> <Link to={'/home'}><button className='buttton' >Back Home</button></Link> </div>
 
-    <h1 className='detailName2' >{info.name}</h1>
+    <div >
+                            <Link to='/home'>
+                                <button className='buttton2'   onClick={deleteG}>Delete game</button>
+                            </Link>
+                            </div>
+
+    <h1 className='detailName2' > Name: {info.name}</h1>
 
     <img className='im2' src={info.image} alt='img nf'/>
 
@@ -51,6 +70,8 @@ export default function Detail(p){
     )
     })}  
     </p>
+
+   
 
     <h2 className='descr'> Description: {info.description} </h2>
                     

@@ -82,6 +82,17 @@
     cursor: pointer;
   }
 
+  .buttton2{
+    font-size:25px;
+    background-color:red;
+    left: 0px;
+    bottom: 0px;
+    position: relative;
+    height: 70px;
+    width: 1000px;
+    cursor: pointer;
+  }
+
   
   .genr{
     font-size: 18px;

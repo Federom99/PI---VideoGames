@@ -146,6 +146,18 @@ export const getDetails = (id)=>{
     }
     }
 
+    export const deleteGame = (id) => {
+        return async function (dispatch) {
+            try {
+                await axios.delete(`http://localhost:3001/videogames/${id}`);
+                return dispatch({
+                    type: 'DELETE_VIDEOGAME'
+                });
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
 
 

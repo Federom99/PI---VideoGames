@@ -44,7 +44,7 @@ export default function Detail(p){
 
     <div>
     <Link to='/home'>
-    <button className='buttton2'   onClick={deleteG}>Delete game</button>
+    <button className='buttton2'onClick={deleteG}>Delete game</button>
     </Link>
     </div>
 

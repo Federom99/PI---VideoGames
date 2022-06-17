@@ -96,11 +96,6 @@ export function getListGenres(){ //(GameCreate) (HOME) Me trae los Generos
     .catch(()=>{ alert('Error al traer Generos')})
     }}
 
-export function filterGamesByGenre(payload){
-   return {
-   type: 'FILTER_GAMES_BY_GENRES',
-   payload
-   }};
 
 //hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
 export function filterCreated(value){ //payload es el value q me llega
@@ -146,17 +141,17 @@ export const getDetails = (id)=>{
     }
     }
 
-    export const deleteGame = (id) => {
-        return async function (dispatch) {
-            try {
-                await axios.delete(`http://localhost:3001/videogames/${id}`);
-                return dispatch({
-                    type: 'DELETE_VIDEOGAME'
-                });
-            } catch (error) {
-                console.log(error)
-            }
-        }
+export const deleteGame = (id) => {
+    return async function (dispatch) {
+    try {
+    await axios.delete(`http://localhost:3001/videogames/${id}`);
+    return dispatch({
+    type: 'DELETE_VIDEOGAME'
+    });
+    } catch (error) {
+    console.log(error)
+    }
+    }
     }
 
 

@@ -65,22 +65,7 @@ const initialState = {
     }
     
     
-    case 'GET_DETAIL':   
-            // let arrGenre = action.payload;
-            // let arrDetail = []
-
-            // if (action.payload.hasOwnProperty('name')) {
-            //     arrDetail = action.payload
-            // }
-
-            // if (action.payload[0] && action.payload[0].hasOwnProperty('createdVideoGame')) {
-            //     arrDetail = arrGenre[0]
-            // }
-
-            // return {
-            //     ...state,
-            //     detail: arrDetail
-            // }  
+    case 'GET_DETAIL':    
     return {
     ...state,
     videoGamesdetails: action.payload

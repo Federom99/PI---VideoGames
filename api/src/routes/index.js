@@ -142,8 +142,24 @@ router.post('/videogames', async(req,res)=>{
     res.status(200).json({message: 'Video game created!'})
     } catch (error) {
     res.status(404).json({message: 'Invalid data'})
-    }
-    });      
+    } 
+    });
+    
+
+    router.delete("/videogames/:id", async (req, res) => {
+        try {
+            const { id } = req.params;
+            console.log(id)
+            const videogamedelete = await Videogame.findByPk(id);
+            if (videogamedelete) {
+                await videogamedelete.destroy();
+                return res.send("video juego elimindado");
+            }
+            res.status(404).send("videogame no encontrado");
+        } catch (error) {
+            console.log(error);
+        }
+    });
  
 module.exports = router
  

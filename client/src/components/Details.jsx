@@ -31,7 +31,7 @@ export default function Detail(p){
     dispatch(getDetails(id))
     }, [dispatch, id])
     
-    console.log(info)
+    // console.log(info)
    
   
     return(

@@ -10,9 +10,9 @@ for (var i=1; i<=Math.ceil(allGames/gamesPage); i++){pageNumbers.push(i)}
 return(
 <div className='pag4'>
 {pageNumbers &&                   
-pageNumbers.map ( number => (
+pageNumbers.map ((number,i) => (
 <ul className='ull'
-key={number} >
+key={i} >
 <button className='pag3' onClick={() => paginado(number)}>{ number }</button>
 </ul>
 ))}

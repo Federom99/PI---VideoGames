@@ -19,7 +19,7 @@ export default function Home (){
     const indexOfLastGame = currentPage * gamesPage 
     const indexOfFirstGame = indexOfLastGame - gamesPage 
 
-    // currentGames devuelve un arreglo q entra del 1 al 9
+    // currentGames devuelve un arreglo q entra del 1 al 15
     // creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games 
     const currentGames =  allGames?.slice(indexOfFirstGame, indexOfLastGame)
     const genres = useSelector((state) => state.genres); //estado global de Generos
@@ -34,7 +34,6 @@ export default function Home (){
     dispatch(getVideoGames());
     dispatch(getGenres()); 
     dispatch(getPlataforms());        
-    //getListGenres para usar con filtrados por Genero
     },[dispatch])
 
     // ** PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Juegos
@@ -61,7 +60,7 @@ export default function Home (){
     //En HOME -> ALL Generos/Plataformas ETC
     function handleFilterGamesByGenre(p){
     dispatch(filterVideogamesByGenre(p.target.value))
-    console.log(p.target.value)
+    // console.log(p.target.value)
     };
 
     //filtramos los creados en la Bdatos
@@ -110,9 +109,9 @@ export default function Home (){
     
     <select  className="selectfont2" onChange={p => handleFilterGamesByGenre(p)}>
     <option value="sinFiltro" selected disabled hidden>Genres</option>               
-    {genres?.map((p) => {
+    {genres?.map((p, i) => {
     return (
-    <option key={p.id} value={p.name}>
+    <option key={i} value={p.name}>
     {p.name}
     </option>
     );
@@ -124,11 +123,11 @@ export default function Home (){
     </div>
 
     <div className='cc'> {currentGames?.length > 0 ? ( 
-    currentGames?.map((e)=>{
+    currentGames?.map((e,i)=>{
 
     return (
     <Fragment>
-    <Card image={e.image} name ={e.name} rating={e.rating} genre= {e.genre } id={e.id}/>
+    <Card  key={i} image={e.image} name ={e.name} rating={e.rating} genre= {e.genre } id={e.id}/>
     </Fragment>
     )
     })) :  

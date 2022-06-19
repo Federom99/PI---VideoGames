@@ -11,10 +11,10 @@ export default function Card ({image, name, rating, genre, id, }){
     <div className="card" >
     <NavLink className={"NavLink"} to= {'/videogames/' + id}>
     <div>
-    <img className="image2" src={image} alt='no se encontro' width="380px" height="250px"/>
+    <img className="image2" src={image} alt='no se encontro' width="330px" height="250px"/>
     <h2 className="title2" >{name}</h2>
-    <h6 className="genres2" >Genres: {genre.join(", ")} </h6>
-    <h6 className="rat" >Rating: {rating } </h6>
+    <h5 className="genres2" >Genres: {genre.join(", ")} </h5>
+    <h5 className="rat" >Rating: {rating } </h5>
     </div></NavLink>
     </div>
     </div>

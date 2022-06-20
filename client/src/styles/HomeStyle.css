@@ -115,11 +115,12 @@
     .selectfont3{
       font-size:18px;
       background-color:#2ECC71 ;
-      left: 380px;
+      left: 420px;
       position: relative;
       bottom: 41px;
       height: 48px;
       border-radius: 80px;
+      cursor: pointer;
     
       
     

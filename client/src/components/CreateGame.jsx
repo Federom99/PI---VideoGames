@@ -27,6 +27,7 @@ export default function Form(){
     repeatedPlataforms[plataformsFiltered[i]]=1
     }
     const finalPlataforms = Object.keys(repeatedPlataforms)
+    
 
     // console.log("soy genresssss", genres)
     // console.log("plataformasdas", finalPlataforms)
@@ -138,10 +139,10 @@ export default function Form(){
 
     <div>
     <label className="name2" >GENRES </label>
-    {genres.map((g)=>{
+    {genres.map((g, i)=>{
     return(
     <>
-    <div className="in" ><input className="b2" value={g} type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>{g}</label></div>
+    <div className="in" ><input className="b2" value={g} key={i} type="checkbox" name="genre" onChange={(e)=>captureValue(e)}/><label>{g}</label></div>
     <br></br>
     <br></br>
     </>
@@ -158,10 +159,10 @@ export default function Form(){
     <div> 
     <label className="name2" >PLATFORMS </label>
                        
-    {finalPlataforms.map((p)=>{
+    {finalPlataforms.map((p,i)=>{
     return(
     <>
-    <div className="in"><input value={p} type="checkbox" name="plataform" onChange={(e)=>captureValue(e)}/><label>{p}</label></div>
+    <div className="in"><input value={p} type="checkbox" name="plataform" key={i} onChange={(e)=>captureValue(e)}/><label>{p}</label></div>
     <br></br>
     <br></br>
     </>

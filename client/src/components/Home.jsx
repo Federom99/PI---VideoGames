@@ -81,7 +81,7 @@ export default function Home (){
 
     <div>
     <Link to= '/'><button className='selectfont'>GO TO INITIAL PAGE</button></Link> 
-    <button  className="selectfont" onClick={p => {handleClick(p) }}>RELOAD GAMES</button>
+    <button  className="selectfont" onClick={p => {handleClick(p)}}>RELOAD GAMES</button>
     <Link to= '/videogames'><button className="selectfont" >CREATE NEW GAME</button></Link>                    
     </div>            
     <br/>

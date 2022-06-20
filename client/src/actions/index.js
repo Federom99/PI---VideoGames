@@ -11,7 +11,9 @@ export const SET_PAGE = 'SET_PAGE';
         }
     }
 
- 
+
+
+
 
 export const filterVideogamesByGenre = (payload)=>{
     return {
@@ -46,6 +48,8 @@ export const orderByRating = (payload)=>{
         }
     }
 
+
+
 export const getGenderType = ()=>{
     return async function(dispatch){
     try{
@@ -63,6 +67,7 @@ export const getGenderType = ()=>{
     }
     }
 
+
     export function getGenres(){
         return function(dispatch){
             axios.get('http://localhost:3001/genres')
@@ -73,6 +78,10 @@ export const getGenderType = ()=>{
         }
     }
 
+
+
+  
+
 export function getPlataforms(){
     return async function (dispatch){
     var json = await axios.get("http://localhost:3001/videogames", {});
@@ -80,6 +89,11 @@ export function getPlataforms(){
     type: "GET_PLATAFORMS", 
     payload: json.data});
     };}
+
+
+
+
+    
 
 export function getListGenres(){ //(GameCreate) (HOME) Me trae los Generos
     return function(dispatch){
@@ -89,6 +103,8 @@ export function getListGenres(){ //(GameCreate) (HOME) Me trae los Generos
     }) 
     .catch(()=>{ alert('Error al traer Generos')})
     }}
+
+
 
 
 //hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
@@ -121,9 +137,6 @@ export const postVideoGames= (payload)=>{
     }
     }
 
-
-
-
 export const getDetails = (id)=>{
     return async function(dispatch){
     try{
@@ -138,6 +151,7 @@ export const getDetails = (id)=>{
     }
     }
 
+
 export const deleteGame = (id) => {
     return async function (dispatch) {
     try {
@@ -150,8 +164,6 @@ export const deleteGame = (id) => {
     }
     }
     }
-    
- 
 
 
 

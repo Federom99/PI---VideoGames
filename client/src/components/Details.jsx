@@ -14,7 +14,8 @@ export default function Detail(p){
     const info = useSelector((state)=> state.videoGamesdetails);
     const gameId = useParams();
     const myHistory = useHistory();
-    
+   
+
 
     const deleteG = () => {
         if (info.hasOwnProperty('createInDb')) {
@@ -26,6 +27,8 @@ export default function Detail(p){
             alert('This game cannot be deleted!')
         }
     }
+
+
 
     useEffect(()=>{
     dispatch(getDetails(id))
@@ -47,6 +50,7 @@ export default function Detail(p){
     <button className='buttton2'onClick={deleteG}>Delete game</button>
     </Link>
     </div>
+
 
     <h1 className='detailName2' > Name: {info.name}</h1>
 

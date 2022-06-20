@@ -52,6 +52,8 @@ const mergeInfo = async() =>{
     return infoMerge;
     }
 
+   
+
 router.get("/videogames", async (req,res,next)=>{       
     try {
      const name = req.query.name;

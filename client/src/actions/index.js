@@ -1,25 +1,26 @@
 import axios from 'axios';
 export const SET_PAGE = 'SET_PAGE';
 
-export const getVideoGames = ()=> {
-    return async function(dispatch) {
-    try {
-    const a = await axios.get('http://localhost:3001/videogames');
-    if(a.status === 200) {
-    dispatch({
-    type: "GET_VIDEO_GAMES",
-    payload : a.data
-    })}
-    } catch (error) {
-    console.log(error)}
+    export function getVideoGames(){
+        return function(dispatch){
+            axios.get('http://localhost:3001/videogames')
+            .then((response)=>{
+                dispatch({type: "GET_VIDEO_GAMES", payload: response.data })
+            })
+            .catch(()=>{alert("Error")})
+        }
     }
-    }
+
+ 
 
 export const filterVideogamesByGenre = (payload)=>{
     return {
     type : "FILTER_BY_GENRE",
     payload : payload
     }}
+
+
+  
 
 export const orderByName = (payload)=>{
     return {
@@ -33,18 +34,16 @@ export const orderByRating = (payload)=>{
     payload : payload
     }}
 
-export const getNameVideoGames = (name)=>{
-    return async function(dispatch){
-    try{
-    let json = await axios.get(`http://localhost:3001/videogames?name=${name}`);
-    return dispatch({
-    type : "GET_VIDEOGAMES_QUERY",
-    payload : json.data
-    })}
-    catch(e){
-    console.log(e)
-    }
-    }
+
+
+    export function getNameVideoGames(name){
+        return function(dispatch){
+            axios.get(`http://localhost:3001/videogames?name=${name}`)
+            .then((response)=>{
+                dispatch({type:"GET_VIDEOGAMES_QUERY", payload: response.data })
+            })
+            .catch(()=>{alert("Error. Name not found")})
+        }
     }
 
 export const getGenderType = ()=>{
@@ -64,19 +63,14 @@ export const getGenderType = ()=>{
     }
     }
 
-
-export const getGenres = ()=>{
-    return async function(dispatch){
-    try{
-    let json = await axios.get('http://localhost:3001/genres');
-    return dispatch({
-    type : "GET_GENRES",
-    payload : json.data
-    })}
-    catch(e){
-    console.log(e)
-    }
-    }
+    export function getGenres(){
+        return function(dispatch){
+            axios.get('http://localhost:3001/genres')
+            .then((response)=>{
+                dispatch({type: "GET_GENRES", payload: response.data})
+            })
+            .catch(()=>{alert("Error, genres not found")})
+        }
     }
 
 export function getPlataforms(){
@@ -127,6 +121,9 @@ export const postVideoGames= (payload)=>{
     }
     }
 
+
+
+
 export const getDetails = (id)=>{
     return async function(dispatch){
     try{
@@ -153,10 +150,8 @@ export const deleteGame = (id) => {
     }
     }
     }
-
-
-
-
+    
+ 
 
 
 

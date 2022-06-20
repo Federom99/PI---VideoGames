@@ -28,7 +28,10 @@ export default function SearchBar(){
     onChange={(p) => handInputChange(p)}/>
 
     <button type='submit' className='btn'>Search</button>
+    
     </form>
+    
     </div>
+    
    )
    }

@@ -52,6 +52,7 @@ export default function Form(){
     {errors.image=" You must enter a valid url"}
 
     if(!newGame.genre || newGame.genre.length===0){errors.genre = "Need to add genres"}
+    
         
     return errors;
     }

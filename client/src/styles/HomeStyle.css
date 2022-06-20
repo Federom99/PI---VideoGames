@@ -57,6 +57,7 @@
     position: relative;
     height: 48px;
     cursor: pointer;
+    border-radius: 80px;
     
     
   
@@ -70,6 +71,7 @@
     bottom: 89px;
     height: 48px;
     cursor: pointer;
+    border-radius: 80px;
     
   
   }
@@ -117,7 +119,7 @@
       position: relative;
       bottom: 41px;
       height: 48px;
-    
+      border-radius: 80px;
     
       
     

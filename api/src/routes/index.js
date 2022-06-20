@@ -162,6 +162,14 @@ router.post('/videogames', async(req,res)=>{
             console.log(error);
         }
     });
- 
+    
+
+
+
+
+  
+
+
+  
 module.exports = router
  

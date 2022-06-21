@@ -109,3 +109,23 @@ body{
     color: yellow;
     font-size: 25px;
   }
+
+  .alert2{
+
+    display: block;
+    color: yellow;
+    font-size: 25px;
+    padding-top: 430px;
+    margin-right: 0px;
+    margin-top: 80px;
+   
+  }
+
+  .input{
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 2px;
+  }
+
+  

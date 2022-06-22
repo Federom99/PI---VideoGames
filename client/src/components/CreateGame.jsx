@@ -171,21 +171,21 @@ export default function Form() {
 
           <div>
             <label className="name2">GENRES </label>
-            {genres.map((g, i) => {
+            {genres.map((g) => {
               return (
-                <>
-                  <div className="in">
+                
+                  <div className="in" key={g}>
                     <input
                       className="input"
                       value={g}
-                      key={i}
+                      
                       type="checkbox"
                       name="genre"
                       onChange={(e) => captureValue(e)}
                     />
                     <label>{g}</label>
                   </div>
-                </>
+                
               );
             })}
             {errores.genre && <p className="alert2">{errores.genre}</p>}
@@ -194,21 +194,21 @@ export default function Form() {
           <div>
             <label className="name2">PLATFORMS </label>
 
-            {finalPlataforms.map((p, j) => {
+            {finalPlataforms.map((p) => {
               return (
-                <>
-                  <div className="in">
+                
+                  <div className="in" key={p}>
                     <input
                       className="input"
                       value={p}
                       type="checkbox"
                       name="plataform"
-                      key={j}
+                    
                       onChange={(e) => captureValue(e)}
                     />
                     <label>{p}</label>
                   </div>
-                </>
+                
               );
             })}
             {errores.plataform && <p className="alert2">{errores.plataform}</p>}

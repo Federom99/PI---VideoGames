@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getVideoGames,
@@ -102,19 +102,20 @@ export default function Home() {
         <div>
           <div>
             <br />
-            <select className="selectfont2" onChange={(p) => handleSort(p)}>
-              <option value="" selected disabled hidden>
+            <select defaultValue={'DEFAULT'} className="selectfont2" onChange={(p) => handleSort(p)}>
+              <option value="DEFAULT" disabled >
                 In alphabetical order
               </option>
               <option value="asc"> A-Z</option>
               <option value="desc"> Z-A</option>
             </select>
 
-            <select
+            <select 
+              defaultValue={'DEFAULT'} 
               className="selectfont2"
               onChange={(p) => handlefilterCreated(p)}
             >
-              <option value="" selected disabled hidden>
+              <option value="DEFAULT" disabled>
                 Show Games
               </option>
               <option value="all">All games</option>
@@ -123,27 +124,30 @@ export default function Home() {
             </select>
 
             <select
+             defaultValue={'DEFAULT'} 
               className="selectfont2"
               onChange={(p) => handleSortRating(p)}
             >
-              <option value="" selected disabled hidden>
+              <option value="DEFAULT" disabled >
                 Rating
               </option>
               <option value="rasd">Low Score</option>
               <option value="rdes">High Score</option>
             </select>
 
-            <select
+            <select defaultValue={'DEFAULT'}
+            
               className="selectfont2"
               onChange={(p) => handleFilterGamesByGenre(p)}
-            >
-              <option value="sinFiltro" selected disabled hidden>
-                Genres
-              </option>
+            > 
+            
+              <option value="sinFiltro" >Genres</option>
+              Genres :{" "}
               {genres?.map((p, i) => {
                 return (
-                  <option key={i} value={p.name}>
-                    {p.name}
+                  <option value={p.name} key={i}>
+                     {" "}
+                    {p.name}{" "}
                   </option>
                 );
               })}
@@ -157,18 +161,18 @@ export default function Home() {
 
         <div className="cc">
           {currentGames?.length > 0 ? (
-            currentGames?.map((e, i) => {
+            currentGames?.map((e) => {
               return (
-                <Fragment>
+                
                   <Card
-                    key={i}
+                    key={e.id}
                     image={e.image}
                     name={e.name}
                     rating={e.rating}
                     genre={e.genre}
                     id={e.id}
                   />
-                </Fragment>
+                
               );
             })
           ) : (

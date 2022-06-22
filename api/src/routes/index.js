@@ -145,7 +145,7 @@ router.post("/videogames", async (req, res) => {
       description,
       release_date,
       rating,
-      plataform,
+      plataform, 
       genre,
       image,
     });

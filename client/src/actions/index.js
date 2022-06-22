@@ -1,5 +1,6 @@
 import axios from "axios";
-export const SET_PAGE = "SET_PAGE";
+
+
 
 export function getVideoGames() {
   return function (dispatch) {
@@ -13,6 +14,8 @@ export function getVideoGames() {
       });
   };
 }
+
+
 
 
 
@@ -104,7 +107,7 @@ export function getPlataforms() {
 
 
 export function getListGenres() {
-  //(GameCreate) (HOME) Me trae los Generos
+ 
   return function (dispatch) {
     axios
       .get("http://localhost:3001/genres")
@@ -112,16 +115,15 @@ export function getListGenres() {
         dispatch({ type: "GET_GENRES", payload: response.data });
       })
       .catch(() => {
-        alert("Error al traer Generos");
+        alert("Error genres not found");
       });
   };
 }
 
 
 
-//hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
+
 export function filterCreated(value) {
-  //payload es el value q me llega
   // console.log(payload)
   return {
     type: "FILTER_CREATED",
@@ -129,12 +131,7 @@ export function filterCreated(value) {
   };
 }
 
-export function setPage(page) {
-  return {
-    type: SET_PAGE,
-    payload: page,
-  };
-}
+
 
 export const postVideoGames = (payload) => {
   return async function () {
@@ -172,15 +169,22 @@ export const getDetails = (id) => {
 
 
 
-export const deleteGame = (id) => {
-  return async function (dispatch) {
-    try {
-      await axios.delete(`http://localhost:3001/videogames/${id}`);
-      return dispatch({
-        type: "DELETE_VIDEOGAME",
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+
+export function deleteGame(id){
+  return function(dispatch){
+    axios.delete(`http://localhost:3001/videogames/${id}`)
+    .then((response)=>{
+      dispatch({
+        type: "DELETE_GAME"
+      })
+    })
+    .catch(() => {
+      alert("No se puede borrar");
+    });
+  }
+}
+
+
+
+
+

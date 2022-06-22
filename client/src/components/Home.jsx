@@ -21,8 +21,7 @@ export default function Home() {
   const allGames = useSelector((state) => state.videogames);
   const [order, setOrder] = useState(""); // es un estado local q arranca vacio para el Asc y Desc Order
 
-  //CREO VARIOS ESTADOS LOCALES y lo seteo en 1- ACA CALCULO LAS CARD POR PAGINAS
-  const [currentPage, setCurrentPage] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
+  const [currentPage, setCurrentPage] = useState(1);
   const [gamesPage, setGamesPage] = useState(15);
   const indexOfLastGame = currentPage * gamesPage;
   const indexOfFirstGame = indexOfLastGame - gamesPage;
@@ -31,8 +30,7 @@ export default function Home() {
   // creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games
   const currentGames = allGames?.slice(indexOfFirstGame, indexOfLastGame);
   const genres = useSelector((state) => state.genres); //estado global de Generos
-  // const plataforms = useSelector((state) => state.plataforms); //estado global de Plataformas
-  // const ratings = useSelector((state) => state.ratings);
+
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -46,8 +44,6 @@ export default function Home() {
 
   // ** PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Juegos
   function handleClick(p) {
-    // p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
-    // dispatch(getVideoGames());
     window.location.reload();
   }
 
@@ -55,25 +51,24 @@ export default function Home() {
   function handleSort(p) {
     p.preventDefault();
     dispatch(orderByName(p.target.value)); //despacho la accion
-    setCurrentPage(1); //ordenamiento seteado en pagina 1
+    setCurrentPage(1);
     setOrder(`Ordenado ${p.target.value}`); //es un estado local vacio, lo uso para modif estado local y renderize
   }
 
   function handleSortRating(p) {
     p.preventDefault();
     dispatch(orderByRating(p.target.value)); //despacho la accion
-    setCurrentPage(1); //ordenamiento seteado en pagina 1
+    setCurrentPage(1);
     setOrder(`Ordenado ${p.target.value}`); //es un estado local vacio, lo uso para modif estado local y renderize
   }
 
-  //Aca aplico lógica, esta funcion le paso en el select de Types
-  //En HOME -> ALL Generos/Plataformas ETC
+
   function handleFilterGamesByGenre(p) {
     dispatch(filterVideogamesByGenre(p.target.value));
     // console.log(p.target.value)
   }
 
-  //filtramos los creados en la Bdatos
+  
   function handlefilterCreated(p) {
     p.preventDefault();
     dispatch(filterCreated(p.target.value));
@@ -102,16 +97,20 @@ export default function Home() {
         <div>
           <div>
             <br />
-            <select defaultValue={'DEFAULT'} className="selectfont2" onChange={(p) => handleSort(p)}>
-              <option value="DEFAULT" disabled >
+            <select
+              defaultValue={"DEFAULT"}
+              className="selectfont2"
+              onChange={(p) => handleSort(p)}
+            >
+              <option value="DEFAULT" disabled>
                 In alphabetical order
               </option>
               <option value="asc"> A-Z</option>
               <option value="desc"> Z-A</option>
             </select>
 
-            <select 
-              defaultValue={'DEFAULT'} 
+            <select
+              defaultValue={"DEFAULT"}
               className="selectfont2"
               onChange={(p) => handlefilterCreated(p)}
             >
@@ -124,29 +123,28 @@ export default function Home() {
             </select>
 
             <select
-             defaultValue={'DEFAULT'} 
+              defaultValue={"DEFAULT"}
               className="selectfont2"
               onChange={(p) => handleSortRating(p)}
             >
-              <option value="DEFAULT" disabled >
+              <option value="DEFAULT" disabled>
                 Rating
               </option>
               <option value="rasd">Low Score</option>
               <option value="rdes">High Score</option>
             </select>
 
-            <select defaultValue={'DEFAULT'}
-            
+            <select
+              defaultValue={"sinFiltro"}
               className="selectfont2"
               onChange={(p) => handleFilterGamesByGenre(p)}
-            > 
-            
-              <option value="sinFiltro" >Genres</option>
+            >
+              <option value="sinFiltro">Genres</option>
               Genres :{" "}
               {genres?.map((p, i) => {
                 return (
                   <option value={p.name} key={i}>
-                     {" "}
+                    {" "}
                     {p.name}{" "}
                   </option>
                 );
@@ -163,16 +161,14 @@ export default function Home() {
           {currentGames?.length > 0 ? (
             currentGames?.map((e) => {
               return (
-                
-                  <Card
-                    key={e.id}
-                    image={e.image}
-                    name={e.name}
-                    rating={e.rating}
-                    genre={e.genre}
-                    id={e.id}
-                  />
-                
+                <Card
+                  key={e.id}
+                  image={e.image}
+                  name={e.name}
+                  rating={e.rating}
+                  genre={e.genre}
+                  id={e.id}
+                />
               );
             })
           ) : (

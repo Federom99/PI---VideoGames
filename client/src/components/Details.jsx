@@ -10,18 +10,19 @@ export default function Detail(p) {
   const dispatch = useDispatch();
   const { id } = useParams();
   const info = useSelector((state) => state.videoGamesdetails);
-  const gameId = useParams();
-  const myHistory = useHistory();
+  const gameId= useParams();
+  const myHistory= useHistory();
 
-  const deleteG = () => {
-    if (info.hasOwnProperty("createInDb")) {
-      dispatch(deleteGame(gameId.id));
-      alert("Game deleted!");
-      myHistory.push("/home");
-    } else {
-      alert("This game cannot be deleted!");
+  const deleteG = ()=>{
+    if(info.hasOwnProperty("createInDb")){
+      dispatch(deleteGame(gameId.id))
+      alert("Game deleted!")
+      myHistory.push("/home")
+    }else{
+      alert("This game cannot be deleted!")
     }
-  };
+  }
+ 
 
   useEffect(() => {
     dispatch(getDetails(id));
@@ -41,13 +42,12 @@ export default function Detail(p) {
             </Link>
           </div>
 
-          <div>
+          {/* <div>
             <Link to="/home">
-              <button className="buttton2" onClick={deleteG}>
-                Delete game
-              </button>
+            <button className="buttton2" onClick={deleteG} >Delete Game </button>
             </Link>
-          </div>
+          </div> */}
+      
 
           <h1 className="detailName2"> Name: {info.name}</h1>
 

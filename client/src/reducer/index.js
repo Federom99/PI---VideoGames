@@ -37,10 +37,7 @@ export default function rootReducer(state = initialState, action) {
         plataform: action.payload,
       };
 
-    case "DELETE_VIDEOGAME":
-      return {
-        ...state,
-      };
+ 
 
     case "FILTER_BY_GENRE":
       const allStateGames = state.allVideoGames;
@@ -60,6 +57,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         resPost: action.json,
       };
+
+      case "DELETE_GAME":
+        return{
+          ...state
+        }
+      
 
     case "GET_DETAIL":
       return {

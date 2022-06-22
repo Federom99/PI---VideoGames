@@ -43,10 +43,11 @@ export function getNameVideoGames(name) {
         dispatch({ type: "GET_VIDEOGAMES_QUERY", payload: response.data });
       })
       .catch(() => {
-        alert("Error. Name not found");
+        alert("Error. Game not found");
       });
   };
 }
+
 
 export const getGenderType = () => {
   return async function (dispatch) {
@@ -139,6 +140,8 @@ export const postVideoGames = (payload) => {
     }
   };
 };
+
+
 
 export const getDetails = (id) => {
   return async function (dispatch) {

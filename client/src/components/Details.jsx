@@ -34,10 +34,11 @@ export default function Detail(p) {
       {info ? (
         <div className="nq">
           <div>
-            {" "}
+            
             <Link to={"/home"}>
               <button className="buttton">Back Home</button>
-            </Link>{" "}
+              
+            </Link>
           </div>
 
           <div>
@@ -50,7 +51,7 @@ export default function Detail(p) {
 
           <h1 className="detailName2"> Name: {info.name}</h1>
 
-          <img className="im2" src={info.image} alt="img nf" />
+          <img className="im2" src={info.image} alt="img not found" />
 
           <h2> Rating: {info.rating}</h2>
 
@@ -83,17 +84,8 @@ export default function Detail(p) {
 
           <h2 className="descr"> Description: {info.description} </h2>
         </div>
-      ) : (
-        <div>
-          <img
-            className="gif"
-            src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif"
-            alt="Loading"
-          />
-
-          <h1 className="b">Loading...</h1>
-        </div>
-      )}
+      ) : <div></div>
+      }
     </div>
   );
 }

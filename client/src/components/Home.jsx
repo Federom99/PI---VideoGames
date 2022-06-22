@@ -46,8 +46,9 @@ export default function Home() {
 
   // ** PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Juegos
   function handleClick(p) {
-    p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
-    dispatch(getVideoGames());
+    // p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
+    // dispatch(getVideoGames());
+    window.location.reload();
   }
 
   // ** ORDENAMIENTO DE PAGINA ASCENDENTE O DESCENDENTE
@@ -87,14 +88,10 @@ export default function Home() {
           <Link to="/">
             <button className="selectfont">GO TO INITIAL PAGE</button>
           </Link>
-          <button
-            className="selectfont"
-            onClick={(p) => {
-              handleClick(p);
-            }}
-          >
+          <button className="selectfont" onClick={(e) => handleClick(e)}>
             RELOAD GAMES
           </button>
+
           <Link to="/videogames">
             <button className="selectfont">CREATE NEW GAME</button>
           </Link>
@@ -159,7 +156,6 @@ export default function Home() {
         </div>
 
         <div className="cc">
-          {" "}
           {currentGames?.length > 0 ? (
             currentGames?.map((e, i) => {
               return (

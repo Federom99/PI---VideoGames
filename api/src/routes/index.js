@@ -159,19 +159,22 @@ router.post("/videogames", async (req, res) => {
   }
 });
 
-router.delete("/videogames/:id", async (req, res) => {
+
+
+router.delete("/videogames/:id", async(req,res)=>{
   try {
-    const { id } = req.params;
-    console.log(id);
-    const videogamedelete = await Videogame.findByPk(id);
-    if (videogamedelete) {
-      await videogamedelete.destroy();
-      return res.send("video juego elimindado");
+    const {id}=req.params;
+    const borrar = await Videogame.findByPk(id);
+    if(borrar){
+      await borrar.destroy()
+      return res.send("game deleted")
     }
-    res.status(404).send("videogame no encontrado");
+    res.status(404).send("cant deleted this game")
   } catch (error) {
-    console.log(error);
+      console.log(error)
   }
-});
+})
+
+
 
 module.exports = router;

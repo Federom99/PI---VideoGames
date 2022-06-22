@@ -194,7 +194,7 @@ export default function Form() {
           <div>
             <label className="name2">PLATFORMS </label>
 
-            {finalPlataforms.map((p, i) => {
+            {finalPlataforms.map((p, j) => {
               return (
                 <>
                   <div className="in">
@@ -203,7 +203,7 @@ export default function Form() {
                       value={p}
                       type="checkbox"
                       name="plataform"
-                      key={i}
+                      key={j}
                       onChange={(e) => captureValue(e)}
                     />
                     <label>{p}</label>

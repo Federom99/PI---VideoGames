@@ -178,7 +178,6 @@ export default function Form() {
                     <input
                       className="input"
                       value={g}
-                      
                       type="checkbox"
                       name="genre"
                       onChange={(e) => captureValue(e)}

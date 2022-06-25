@@ -150,7 +150,7 @@ export default function Form() {
               className="name"
               type="text"
               name="rating"
-              placeholder="0-5"
+              placeholder="1-5"
               onChange={(e) => captureValue(e)}
             />
           </div>

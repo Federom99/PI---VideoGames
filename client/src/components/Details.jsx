@@ -17,10 +17,11 @@ export default function Detail(p) {
     if(info.hasOwnProperty("createInDb")){
       dispatch(deleteGame(gameId.id))
       alert("Game deleted!")
-      myHistory.push("/home")
+    
     }else{
       alert("This game cannot be deleted!")
     }
+    myHistory.push("/home")
   }
  
 

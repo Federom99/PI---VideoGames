@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Details from './components/Details'
 import CreateGame from './components/CreateGame';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route exact path= '/home'><Home /></Route>
       <Route  path='/videogames/:id' ><Details /> </Route> 
       <Route  path= '/videogames' ><CreateGame /></Route>
+      <Route path="*" component={NotFound} />
       
                         
            

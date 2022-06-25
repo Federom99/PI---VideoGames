@@ -42,11 +42,11 @@ export default function Detail(p) {
             </Link>
           </div>
 
-          {/* <div>
+          <div>
             <Link to="/home">
             <button className="buttton2" onClick={deleteG} >Delete Game </button>
             </Link>
-          </div> */}
+          </div>
       
 
           <h1 className="detailName2"> Name: {info.name}</h1>

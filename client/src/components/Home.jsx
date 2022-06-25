@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import Paginado from "./Paginado";
+import NotFoundVideoGame from "./NotFoundVideoGame";
+import Loading from "./Loading";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ export default function Home() {
   const [gamesPage, setGamesPage] = useState(15);
   const indexOfLastGame = currentPage * gamesPage;
   const indexOfFirstGame = indexOfLastGame - gamesPage;
+  const [loading, setLoading] = useState(true);
 
   // currentGames devuelve un arreglo q entra del 1 al 15
   // creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games
@@ -34,6 +37,10 @@ export default function Home() {
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  if(allGames.length > 0 && loading){
+    setLoading(false);
+}
 
   // ** TRAIGO DEL ESTADO LOS GENEROS CUANDO EL COMPONENTE SE MONTA
   useEffect(() => {
@@ -158,7 +165,7 @@ export default function Home() {
         </div>
 
         <div className="cc">
-          {currentGames?.length > 0 ? (
+          {currentGames?.length > 0 && !loading ? (
             currentGames?.map((e) => {
               return (
                 <Card
@@ -171,16 +178,14 @@ export default function Home() {
                 />
               );
             })
-          ) : (
-            <div className="gif">
-              <img
-                src="https://c.tenor.com/WlKcCyNqoZwAAAAC/super-mario-mario.gif"
-                alt="Loading"
-              />
-
-              <h1 className="b">Loading...</h1>
-            </div>
-          )}
+          ) : !currentGames.length > 0 && loading ? (
+            <Loading/>
+          ) :(
+            <NotFoundVideoGame/>
+          )
+          
+          
+          }
         </div>
 
         <Paginado

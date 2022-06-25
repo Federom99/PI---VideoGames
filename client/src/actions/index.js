@@ -40,17 +40,35 @@ export const orderByRating = (payload) => {
   };
 };
 
-export function getNameVideoGames(name) {
-  return function (dispatch) {
-    axios
+// export function getNameVideoGames(name) {
+//   return function (dispatch) {
+//     axios
+//       .get(`http://localhost:3001/videogames?name=${name}`)
+//       .then((response) => {
+//         dispatch({ type: "GET_VIDEOGAMES_QUERY", payload: response.data });
+//       })
+//       .catch(() => {
+//         alert("Error. Game not found");
+//       });
+//   };
+// }
+
+export function getNameVideoGames(name){
+  return async function(dispatch){
+    try {
+      var json = await   axios
       .get(`http://localhost:3001/videogames?name=${name}`)
-      .then((response) => {
-        dispatch({ type: "GET_VIDEOGAMES_QUERY", payload: response.data });
+      return dispatch({
+        type: "GET_VIDOEGAMES_QUERY",
+        payload: json.data
       })
-      .catch(() => {
-        alert("Error. Game not found");
-      });
-  };
+    } catch (error) {
+      dispatch({
+        type: "GET_VIDEOGAMES_QUERY",
+        payload: [],
+      })
+    }
+  }
 }
 
 

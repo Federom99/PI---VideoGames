@@ -1,3 +1,8 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
 .as{
     background: url(https://i.pinimg.com/originals/8c/f0/1b/8cf01b0f5bac59468e7bd497a4f8d9d8.jpg);
     background-size: fill;
@@ -76,3 +81,4 @@
   transform: scale(1.05);
   will-change: transform;
 }
+

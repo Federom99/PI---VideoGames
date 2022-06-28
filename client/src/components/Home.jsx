@@ -10,7 +10,7 @@ import {
   getPlataforms,
   orderByRating,
 } from "../actions";
-import "../styles/HomeStyle.css";
+import s from  "../styles/HomeStyle.css";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
@@ -86,7 +86,7 @@ export default function Home() {
       <div className="a">
         <div className="padre"></div>
 
-        <div>
+        <div className="divFiltros">
           <Link to="/">
             <button className="selectfont">GO TO INITIAL PAGE</button>
           </Link>
@@ -101,8 +101,8 @@ export default function Home() {
         <br />
 
         <SearchBar />
-        <div>
-          <div>
+        <div className="divFiltros">
+          
             <br />
             <select
               defaultValue={"DEFAULT"}
@@ -161,7 +161,7 @@ export default function Home() {
             <br />
             <br />
             <br />
-          </div>
+          
         </div>
 
         <div className="cc">
